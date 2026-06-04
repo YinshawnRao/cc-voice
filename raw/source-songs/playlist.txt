@@ -1,0 +1,17 @@
+# yt-dlp 批量下载清单 · Phase 1+ 翻唱源歌
+# 用法：scripts/01_download.sh 自动处理本文件
+#
+# 这里的歌不是张韶涵唱的 — 它们是 "要被换成张韶涵嗓子的目标"。
+# Phase 1 取 1 首做 demo；Phase 2 评测可扩 4 首（中音女声 / 高音女声 / 男声跨性别 / 高音爆发）。
+#
+# === Phase 1 源歌 ===
+#
+# [B站][studio][邓紫棋 光年之外 - 4K HD 官方 MV][~4:00][A]
+# 备选：BV1TJFfeNEhw (8K120 FLAC，最佳音质但容器最大)
+#       BV1b7421Z7hY (4K Remaster)
+https://www.bilibili.com/video/BV13q4y1T7xc/
+#
+# === Phase 2 评测源歌（暂未启用）===
+# # [B站][studio][周深 起风了][~4:00][A]
+# # [B站][studio][陈奕迅 红玫瑰 - 跨性别测试][~4:30][A]
+# # [B站][studio][刘惜君 我很快乐][~4:00][A]

@@ -1,0 +1,66 @@
+# ============================================================
+#  cc-voice .gitignore
+#  原则：git 只管「代码 / 文档 / 配置 / 小清单」；
+#       音频 / 模型权重 / venv / 框架 / 数据集 走 git 之外同步（见 SETUP.md）
+# ============================================================
+
+# --- Audio assets (体量 + 版权) ---
+*.wav
+*.m4a
+*.mp3
+*.flac
+*.webm
+*.opus
+*.aac
+*.ogg
+
+# --- Model weights ---
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.pt
+*.bin
+
+# --- Datasets & raw materials ---
+raw/**/*.txt.bak
+raw/**/.downloaded.txt
+dataset/**/manifest.json.tmp
+# 保留小而有用的清单
+!raw/**/playlist.txt
+!dataset/**/manifest.json
+
+# --- Frameworks（RVC clone，体量大；补丁见 patches/rvc-macos.patch）---
+frameworks/*
+!frameworks/.gitkeep
+
+# --- Python envs ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.python-version
+*.egg-info/
+
+# --- Secrets（cookies 含登录凭证；用 cookies* 一把全挡，含 .bak 备份）---
+cookies*
+.env
+.env.local
+
+# --- Logs（任意位置的训练/推理日志，临时产物）---
+*.log
+
+# --- Outputs（全部可再生：成品音频/中间产物/日志）---
+#   想长期保留的分析图请放进 docs/，不要留在 outputs/
+outputs/**
+!outputs/.gitkeep
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- macOS / editor ---
+.DS_Store
+.idea/
+.vscode/
+*.swp

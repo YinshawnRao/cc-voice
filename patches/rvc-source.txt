@@ -1,0 +1,21 @@
+# RVC 框架来源（frameworks/rvc-webui-macos/ 的复原信息）
+#
+# 本项目对 RVC fork 打了 6 处补丁（MPS / weights_only / faiss segfault 等），
+# 补丁见同目录 rvc-macos.patch。换电脑时按 SETUP.md 复原。
+
+repo:    https://github.com/qingbo1011/RVC-WebUI-MacOS.git
+branch:  main
+commit:  0440e6d97a4564ba4219db5f5ba9505abd80437d
+
+# 复原（详见 SETUP.md）：
+#   git clone https://github.com/qingbo1011/RVC-WebUI-MacOS.git frameworks/rvc-webui-macos
+#   cd frameworks/rvc-webui-macos && git checkout 0440e6d
+#   git apply ../../patches/rvc-macos.patch
+#
+# 补丁覆盖文件：
+#   infer/lib/train/utils.py
+#   infer/modules/train/extract/extract_f0_rmvpe.py
+#   infer/modules/train/extract_feature_print.py
+#   infer/modules/train/train.py
+#   infer/modules/vc/utils.py
+#   tools/infer_cli.py

@@ -1,0 +1,57 @@
+# yt-dlp 批量下载清单 · 张韶涵真嗓训练素材
+# 用法：scripts/01_download.sh 会用 --batch-file 把本文件喂给 yt-dlp
+# 格式：每行一个 URL，# 开头是注释。空行忽略。
+#
+# 目标：Phase 1 ~12-16 min 干净干声 (Phase 2/3 扩充到 40-60 min)
+# 质量要求：
+#   - 优先 studio MV / 录音棚版（无观众噪声）
+#   - live 可选，但需人声突出、无密集和声
+#   - 多音域覆盖：低中高音都要有
+#
+# 标注规则（已 curate 的版本）：[来源][类型][曲目 + 版本描述][~时长][质量]
+#   类型：studio (录音棚/官方MV) | live (现场) | tv (综艺)
+#   质量：A (干净) | B (有混响) | C (慎用)
+#
+# === Phase 1 最小训练集（6 首，~24 min 原曲）===
+# Phase 2/3 扩充时再追加链接到本文件，--download-archive 保证不重下
+#
+# [B站][studio][隐形的翅膀 - 百万录音棚4K完整版][~4:00][A]
+https://www.bilibili.com/video/BV1Mz421d7uo/
+#
+# [B站][studio][欧若拉 - 4K 官方 MV][~4:00][A]
+https://www.bilibili.com/video/BV1u9cTzWEjw/
+#
+# [B站][live][阿刁 - 我是歌手 2018 4K超清][~4:30][B]
+https://www.bilibili.com/video/BV16NqVYqEjy/
+#
+# [B站][studio][淋雨一直走 - 官方完整版 HD MV][~4:00][A]
+https://www.bilibili.com/video/BV1ws411H7tT/
+#
+# [B站][studio][梦里花 - 2018 我是歌手 官方 MV][~4:30][A]
+https://www.bilibili.com/video/BV1LW411B7gh/
+#
+# [B站][studio][看得最远的地方 - 4K 修复 MV][~4:00][A]
+https://www.bilibili.com/video/BV1UL41137sS/
+#
+# === Phase 2 追加 · 聚焦高音区 (Eb5+ belts) ===
+# 目的：Phase 1 训练集 F0 p95=530Hz，2:15-2:30 撕裂段源歌 F0 峰 552Hz 超出训练分布
+#       → 必须补 530+ Hz 高音区样本密度
+#
+# [B站][studio][潘多拉 - 高清修复 MV][~4:00][A]
+https://www.bilibili.com/video/BV15a4y177zo/
+#
+# [B站][studio][破茧 - 百万豪装录音棚 Hi-Res][~4:00][A]
+https://www.bilibili.com/video/BV1ef421Q77n/
+#
+# [B站][studio][寓言 - 超清 4K 修复 MV][~4:00][A]
+https://www.bilibili.com/video/BV1Nv411x7R3/
+#
+# [B站][studio][香水百合 - 4K60帧修复 MV][~4:00][A]
+https://www.bilibili.com/video/BV1MY411M713/
+#
+# [B站][live][暮色回响 - 4K 常熟演唱会][~4:00][B]
+https://www.bilibili.com/video/BV138yKYXES3/
+#
+# [B站][live][遗失的美好 - 2025 B站跨年 4K60][~4:00][B]
+https://www.bilibili.com/video/BV1YdiwBJEh8/
+#

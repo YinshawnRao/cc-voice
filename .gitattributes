@@ -1,0 +1,2 @@
+# 补丁文件按原样存储，禁止换行符规范化，保证换机 git apply 能干净应用
+patches/*.patch -text

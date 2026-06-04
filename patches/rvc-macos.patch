@@ -1,0 +1,150 @@
+diff --git a/infer/lib/train/utils.py b/infer/lib/train/utils.py
+index 765c54c..6ef8a5f 100644
+--- a/infer/lib/train/utils.py
++++ b/infer/lib/train/utils.py
+@@ -235,8 +235,9 @@ def plot_spectrogram_to_numpy(spectrogram):
+     plt.tight_layout()
+ 
+     fig.canvas.draw()
+-    data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep="")
+-    data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
++    # matplotlib 3.10+ removed tostring_rgb(); use buffer_rgba() and drop alpha.
++    rgba = np.frombuffer(fig.canvas.buffer_rgba(), dtype=np.uint8)
++    data = rgba.reshape(fig.canvas.get_width_height()[::-1] + (4,))[:, :, :3]
+     plt.close()
+     return data
+ 
+@@ -266,8 +267,9 @@ def plot_alignment_to_numpy(alignment, info=None):
+     plt.tight_layout()
+ 
+     fig.canvas.draw()
+-    data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep="")
+-    data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
++    # matplotlib 3.10+ removed tostring_rgb(); use buffer_rgba() and drop alpha.
++    rgba = np.frombuffer(fig.canvas.buffer_rgba(), dtype=np.uint8)
++    data = rgba.reshape(fig.canvas.get_width_height()[::-1] + (4,))[:, :, :3]
+     plt.close()
+     return data
+ 
+diff --git a/infer/modules/train/extract/extract_f0_rmvpe.py b/infer/modules/train/extract/extract_f0_rmvpe.py
+index 90b2073..273cdbf 100644
+--- a/infer/modules/train/extract/extract_f0_rmvpe.py
++++ b/infer/modules/train/extract/extract_f0_rmvpe.py
+@@ -49,8 +49,16 @@ class FeatureInput(object):
+                 from infer.lib.rmvpe import RMVPE
+ 
+                 print("Loading rmvpe model")
++                import torch
++                if torch.cuda.is_available():
++                    _dev = "cuda"
++                elif torch.backends.mps.is_available():
++                    _dev = "mps"
++                else:
++                    _dev = "cpu"
++                print(f"  rmvpe device: {_dev}")
+                 self.model_rmvpe = RMVPE(
+-                    "assets/rmvpe/rmvpe.pt", is_half=is_half, device="cuda"
++                    "assets/rmvpe/rmvpe.pt", is_half=is_half, device=_dev
+                 )
+             f0 = self.model_rmvpe.infer_from_audio(x, thred=0.03)
+         return f0
+diff --git a/infer/modules/train/extract_feature_print.py b/infer/modules/train/extract_feature_print.py
+index 96a69de..3b14f3a 100644
+--- a/infer/modules/train/extract_feature_print.py
++++ b/infer/modules/train/extract_feature_print.py
+@@ -18,12 +18,22 @@ else:
+     os.environ["CUDA_VISIBLE_DEVICES"] = str(i_gpu)
+     version = sys.argv[6]
+     is_half = sys.argv[7].lower() == "true"
+-import fairseq
+ import numpy as np
+ import soundfile as sf
+ import torch
+ import torch.nn.functional as F
+ 
++# Patch: PyTorch 2.6+ defaults to weights_only=True; fairseq checkpoints contain
++# fairseq.data.dictionary.Dictionary which is not in the safe globals whitelist.
++# Force weights_only=False for the hubert load below (file is local + trusted).
++_orig_torch_load = torch.load
++def _patched_torch_load(*args, **kwargs):
++    kwargs.setdefault("weights_only", False)
++    return _orig_torch_load(*args, **kwargs)
++torch.load = _patched_torch_load
++
++import fairseq
++
+ if "privateuseone" not in device:
+     device = "cpu"
+     if torch.cuda.is_available():
+diff --git a/infer/modules/train/train.py b/infer/modules/train/train.py
+index 38a5678..3229fc7 100644
+--- a/infer/modules/train/train.py
++++ b/infer/modules/train/train.py
+@@ -228,13 +228,13 @@ def run(rank, n_gpus, hps, logger: logging.Logger):
+             if hasattr(net_g, "module"):
+                 logger.info(
+                     net_g.module.load_state_dict(
+-                        torch.load(hps.pretrainG, map_location="cpu")["model"]
++                        torch.load(hps.pretrainG, map_location="cpu", weights_only=False)["model"]
+                     )
+                 )  ##测试不加载优化器
+             else:
+                 logger.info(
+                     net_g.load_state_dict(
+-                        torch.load(hps.pretrainG, map_location="cpu")["model"]
++                        torch.load(hps.pretrainG, map_location="cpu", weights_only=False)["model"]
+                     )
+                 )  ##测试不加载优化器
+         if hps.pretrainD != "":
+@@ -243,13 +243,13 @@ def run(rank, n_gpus, hps, logger: logging.Logger):
+             if hasattr(net_d, "module"):
+                 logger.info(
+                     net_d.module.load_state_dict(
+-                        torch.load(hps.pretrainD, map_location="cpu")["model"]
++                        torch.load(hps.pretrainD, map_location="cpu", weights_only=False)["model"]
+                     )
+                 )
+             else:
+                 logger.info(
+                     net_d.load_state_dict(
+-                        torch.load(hps.pretrainD, map_location="cpu")["model"]
++                        torch.load(hps.pretrainD, map_location="cpu", weights_only=False)["model"]
+                     )
+                 )
+ 
+diff --git a/infer/modules/vc/utils.py b/infer/modules/vc/utils.py
+index c128707..3f0394c 100644
+--- a/infer/modules/vc/utils.py
++++ b/infer/modules/vc/utils.py
+@@ -1,5 +1,12 @@
+ import os
+ 
++import torch as _torch
++_orig_torch_load = _torch.load
++def _patched_torch_load(*args, **kwargs):
++    kwargs.setdefault("weights_only", False)
++    return _orig_torch_load(*args, **kwargs)
++_torch.load = _patched_torch_load
++
+ from fairseq import checkpoint_utils
+ 
+ 
+diff --git a/tools/infer_cli.py b/tools/infer_cli.py
+index bbe0a53..8a0f135 100644
+--- a/tools/infer_cli.py
++++ b/tools/infer_cli.py
+@@ -4,6 +4,14 @@ import sys
+ 
+ now_dir = os.getcwd()
+ sys.path.append(now_dir)
++
++# Force CPU on Mac: PyTorch MPS hubert.to() segfaults during inference.
++# Set NO_MPS=1 env (set by scripts/06_infer.sh) to disable MPS detection entirely.
++if os.environ.get("NO_MPS") == "1":
++    import torch
++    torch.backends.mps.is_available = lambda: False
++    torch.backends.mps.is_built = lambda: False
++
+ from dotenv import load_dotenv
+ from scipy.io import wavfile
+ 
