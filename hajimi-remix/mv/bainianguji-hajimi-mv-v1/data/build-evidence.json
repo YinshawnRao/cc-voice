@@ -1,0 +1,33 @@
+{
+  "master_sha256": "021b37371e3eaff7acc3a96abdef256583405e6580cf4e20307003e8e56ef3c9",
+  "analyzer": "music-to-video/analyze-beatgrid.py",
+  "analyzer_sha256": "ed4032a948cb234291e27aefb83ec2d4f16929d080c6b216641e2872f1302279",
+  "audiomap_sha256": "b2a3994a4a5c48c01f17f2e0d8f6d86f1ef53cf236e911f1bc3205d187b6809c",
+  "analyzer_invocations_this_build": 0,
+  "recipe_sha256": "de4e222a67d5478495ba1fc0df5673a854640730d04855725a95fbb8038d4ebf",
+  "renderer_sha256": "4329fac0558ef4bec264317ab23b527f4b761eccf692fb3fe047b1f2bfb2eabf",
+  "duration_seconds": 54.7,
+  "sections": 4,
+  "syllables": 97,
+  "proxy_sha256": "ace0dbefe897825d26288ecef77762fb7919aeed940b36ae9fb06833e1dc81cc",
+  "performance": {
+    "label": "mv-build",
+    "wall_seconds": 0.089,
+    "child_user_cpu_seconds": 0.023,
+    "child_system_cpu_seconds": 0.011,
+    "child_max_resident_set_mb": 11.48,
+    "threads": 2,
+    "system_swap_counters_before": {
+      "swapins_pages": 644980,
+      "swapouts_pages": 1327242
+    },
+    "system_swap_counters_after": {
+      "swapins_pages": 644980,
+      "swapouts_pages": 1327242
+    },
+    "system_swap_counter_delta": {
+      "swapins_pages": 0,
+      "swapouts_pages": 0
+    }
+  }
+}

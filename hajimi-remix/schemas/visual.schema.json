@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cc-voice.local/schemas/hajimi/visual-v1.json",
+  "title": "Hajimi Visual Window Evidence V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifact_kind", "mode"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "artifact_kind": { "const": "hajimi-visual-window" },
+    "mode": { "enum": ["source_mv_window", "generated_fallback"] },
+    "source": { "$ref": "#/$defs/source" },
+    "alignment": { "$ref": "#/$defs/alignment" },
+    "proxy": { "$ref": "#/$defs/proxy" },
+    "fallback": { "$ref": "#/$defs/fallback" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "mode": { "const": "source_mv_window" } },
+        "required": ["mode"]
+      },
+      "then": {
+        "required": ["source", "alignment", "proxy"],
+        "not": { "required": ["fallback"] }
+      }
+    },
+    {
+      "if": {
+        "properties": { "mode": { "const": "generated_fallback" } },
+        "required": ["mode"]
+      },
+      "then": {
+        "required": ["fallback"],
+        "not": { "anyOf": [{ "required": ["source"] }, { "required": ["alignment"] }, { "required": ["proxy"] }] }
+      }
+    }
+  ],
+  "$comment": "CLI must verify source_end > source_start, proxy duration equals the authoritative song master within one 30 fps frame, proxy hash is current, strict decode succeeds, and the proxy contains no audio stream.",
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$)).+$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "title",
+        "channel",
+        "local_path",
+        "sha256",
+        "duration_seconds",
+        "window_start_seconds",
+        "window_end_seconds"
+      ],
+      "properties": {
+        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "channel": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "local_path": { "$ref": "#/$defs/relativePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "duration_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "window_start_seconds": { "type": "number", "minimum": 0 },
+        "window_end_seconds": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "alignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "probe_start_seconds", "probe_end_seconds", "lag_seconds", "normalized_peak"],
+      "properties": {
+        "method": { "const": "mono_8khz_audio_cross_correlation" },
+        "probe_start_seconds": { "type": "number", "minimum": 0 },
+        "probe_end_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "lag_seconds": { "type": "number" },
+        "normalized_peak": { "type": "number", "minimum": -1, "maximum": 1 }
+      },
+      "$comment": "CLI must require an unambiguous correlation peak and use the measured lag when deriving source window timestamps."
+    },
+    "proxy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "duration_seconds",
+        "frame_count",
+        "codec",
+        "profile",
+        "pixel_format",
+        "width",
+        "height",
+        "fps",
+        "audio_stream_count",
+        "keyframe_interval_max_seconds",
+        "muted"
+      ],
+      "properties": {
+        "path": { "$ref": "#/$defs/relativePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "duration_seconds": { "type": "number", "minimum": 20, "maximum": 75 },
+        "frame_count": { "type": "integer", "minimum": 599, "maximum": 2251 },
+        "codec": { "const": "h264" },
+        "profile": { "enum": ["Main", "High"] },
+        "pixel_format": { "const": "yuv420p" },
+        "width": { "const": 928 },
+        "height": { "const": 642 },
+        "fps": { "type": "number", "minimum": 29.9, "maximum": 30 },
+        "audio_stream_count": { "const": 0 },
+        "keyframe_interval_max_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 1.1 },
+        "muted": { "const": true },
+        "color": { "const": "BT.709 SDR" }
+      }
+    },
+    "fallback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preset", "runtime_network", "runtime_randomness"],
+      "properties": {
+        "preset": { "const": "hajimi-rain-window-generated-v1" },
+        "runtime_network": { "const": false },
+        "runtime_randomness": { "const": false }
+      }
+    }
+  }
+}

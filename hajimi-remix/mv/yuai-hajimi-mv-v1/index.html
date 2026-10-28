@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+      .frame { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+      #el-yuai-mv {
+        position: absolute; left: 76px; top: 164px; width: 928px; height: 642px;
+        object-fit: fill; background: #1A1A1A; z-index: 2;
+      }
+      #el-yuai-mv-overlay {
+        position: absolute; left: 76px; top: 164px; width: 928px; height: 642px;
+        z-index: 3; pointer-events: none; color: #F5F0E8;
+        font-family: Inter, Arial, sans-serif;
+      }
+      #el-yuai-mv-overlay .mv-caption {
+        position: absolute; left: 0; right: 0; bottom: 0; height: 72px;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 30px; background: rgba(26,26,26,.82);
+        border-top: 3px solid rgba(232,93,93,.82);
+        font-size: 16px; font-weight: 700; letter-spacing: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="50.15"
+      data-width="1080"
+      data-height="1920"
+      data-fps="30"
+    >
+      <video
+        id="el-yuai-mv"
+        class="clip"
+        src="assets/yuai-official-mv-window.mp4"
+        data-start="0"
+        data-duration="50.15"
+        data-media-start="0"
+        data-track-index="2"
+        muted
+        playsinline
+        preload="auto"
+      ></video>
+      <div
+        id="el-yuai-mv-overlay"
+        class="clip"
+        data-start="0"
+        data-duration="50.15"
+        data-track-index="3"
+      >
+        <div class="mv-caption"><span>YU AI / OFFICIAL MV</span><span>HAJIMI AUDIO / 152 BPM</span></div>
+      </div>
+
+      <div
+        id="el-01-chorus-a"
+        class="frame clip"
+        data-composition-id="01-chorus-a"
+        data-composition-src="compositions/frames/01-chorus-a.html"
+        data-start="0"
+        data-duration="18.28"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <div
+        id="el-02-build"
+        class="frame clip"
+        data-composition-id="02-build"
+        data-composition-src="compositions/frames/02-build.html"
+        data-start="18.28"
+        data-duration="14.3"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <div
+        id="el-03-climax"
+        class="frame clip"
+        data-composition-id="03-climax"
+        data-composition-src="compositions/frames/03-climax.html"
+        data-start="32.58"
+        data-duration="9.715"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <div
+        id="el-04-outro"
+        class="frame clip"
+        data-composition-id="04-outro"
+        data-composition-src="compositions/frames/04-outro.html"
+        data-start="42.295"
+        data-duration="7.855"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- BGM -->
+      <audio id="el-bgm" src="assets/bgm.wav" data-start="0" data-duration="50.15"
+        data-track-index="11" data-volume="1"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "hajimi-visual-window",
+  "mode": "source_mv_window",
+  "source": {
+    "url": "https://www.youtube.com/watch?v=upkaTcir1m8",
+    "title": "百年孤寂",
+    "channel": "FayeWongVEVO 官方 MV",
+    "local_path": "cc-media/sandbox/wangfei-intro-top5/raw/bainian.mp4",
+    "sha256": "a99bb7ade968f883e7a498749f343255e15a7618d90d57faf4799b15d96a6ddc",
+    "duration_seconds": 320.667574,
+    "window_start_seconds": 30.3,
+    "window_end_seconds": 85.0
+  },
+  "alignment": {
+    "method": "mono_8khz_audio_cross_correlation",
+    "probe_start_seconds": 30.3,
+    "probe_end_seconds": 60.3,
+    "lag_seconds": 0.0,
+    "normalized_peak": 0.999994
+  },
+  "proxy": {
+    "path": "assets/visual.mp4",
+    "sha256": "ace0dbefe897825d26288ecef77762fb7919aeed940b36ae9fb06833e1dc81cc",
+    "duration_seconds": 54.7,
+    "frame_count": 1641,
+    "codec": "h264",
+    "profile": "High",
+    "pixel_format": "yuv420p",
+    "width": 928,
+    "height": 642,
+    "fps": 30.0,
+    "audio_stream_count": 0,
+    "keyframe_interval_max_seconds": 1.0,
+    "muted": true,
+    "color": "BT.709 SDR"
+  }
+}

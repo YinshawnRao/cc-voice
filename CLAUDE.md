@@ -174,7 +174,7 @@
 
 ### 4.2 yt-dlp 素材采集
 
-用户已有可用的 cookies 文件，路径通常在 `~/.config/yt-dlp/cookies.txt` 或项目本地。**不要把 cookies 文件入 git**，在 `.gitignore` 显式排除。
+当前权威 cookies 来源是 `/Users/yinshawnrao/explorer/cc-media/all_cookies.txt`。运行 yt-dlp 前，如项目根 `cookies.txt` 缺失、失效或早于该源文件，先把源文件**覆盖复制**为项目根 `cookies.txt`，并设置为仅当前用户可读写（`chmod 600`）。只替换项目内副本，不删除或改写 `cc-media/all_cookies.txt`；不要在终端输出、日志或文档中泄露 cookies 内容。**所有 cookies 文件都不得入 git**，继续由 `.gitignore` 排除。
 
 标准下载命令模板（写进 `scripts/01_download.sh`）：
 ```bash
@@ -250,7 +250,7 @@ Claude Code 第一次接管时，**先执行**：
 
 1. 跑 `sw_vers && system_profiler SPHardwareDataType | grep -E "Chip|Memory"`，确认硬件实际型号和统一内存大小
 2. 检查 `which python3.10 ffmpeg yt-dlp git` 是否齐全；缺哪个用 `brew install` 装哪个
-3. 确认 `~/.config/yt-dlp/cookies.txt` 或项目本地 cookies 是否存在、可用
+3. 用 `/Users/yinshawnrao/explorer/cc-media/all_cookies.txt` 刷新项目根 `cookies.txt`，设置 `chmod 600`，并用 yt-dlp metadata-only 请求验证可用性（不得输出 cookies 内容）
 4. 执行 `python3.10 -c "import torch; print(torch.backends.mps.is_available(), torch.backends.mps.is_built())"` 验证 MPS
 5. 创建项目结构骨架（按第 3 节）
 6. 初始化 `raw/zhang-shaohan/playlist.txt`，先给用户列 5-10 个候选张韶涵 live/录音棚音频源，**让用户确认**再下载

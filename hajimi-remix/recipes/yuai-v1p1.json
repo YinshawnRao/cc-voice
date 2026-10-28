@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "hajimi-song-recipe",
+  "song_id": "yuai",
+  "display": {
+    "title_zh": "雨爱",
+    "title_en": "Rain Love",
+    "artist_label": "杨丞琳 / Rainie Yang",
+    "hajimi_label": "HAJIMI REMIX"
+  },
+  "presets": {
+    "audio": "hajimi-note-event-v1.1",
+    "mix": "hajimi-pop-v1",
+    "video": "hajimi-rain-window-v1"
+  },
+  "source": {
+    "guide_vocal": {
+      "path": "dataset/source-songs/vocals/yuai.wav",
+      "sha256": "5fe21826e3dac714114fa90d19121d48b8e62667701d757efb1f2bbbc8322b6d",
+      "sample_rate": 44100,
+      "channels": 2,
+      "duration_seconds": 282.633288
+    },
+    "instrumental": {
+      "path": "dataset/source-songs/no_vocals/yuai.wav",
+      "sha256": "b56e79f6b61c3cd6a4cdfcf9add3552a004a74a852805a793d1f22f4132197d0",
+      "sample_rate": 44100,
+      "channels": 2,
+      "duration_seconds": 282.633288
+    }
+  },
+  "window": {
+    "start_seconds": 66.45,
+    "end_seconds": 116.6,
+    "duration_seconds": 50.15,
+    "selection_evidence": "Accepted first complete chorus window from the Rain Love Note/Event V1 golden fixture."
+  },
+  "event_extraction": {
+    "pitch_floor_hz": 90.0,
+    "pitch_ceiling_hz": 700.0,
+    "midi_min": 57,
+    "midi_max": 76,
+    "structure_points_relative_seconds": [18.65, 32.85, 42.57]
+  },
+  "arrangement": {
+    "climax_seconds": 32.85,
+    "bridge_gap_seconds": 0.28,
+    "sections": []
+  },
+  "voicebank": {
+    "jp_sustain": {
+      "path": "hajimi-remix/assets/voicebank/hachimi_o_nameruto_phrase.wav",
+      "sha256": "9cf80e21fb487edaa773eec0ec76402d9cd26c9e59b620d3609f9fb7022292f2"
+    },
+    "zh_attack": {
+      "path": "hajimi-remix/assets/voicebank/hajimi_nanbei_lvdou_zh_yushu.wav",
+      "sha256": "cd48f74a9ce92705f10814122717d5570b25bfaa7674b94fcf234150f0f99c7d"
+    }
+  },
+  "mv": {
+    "source_video": {
+      "path": "hajimi-remix/work/source/rain-love-original/oec9R5ypf-o-hls.mp4",
+      "sha256": "9a6a688d79091dbcf1eeb971e21c2cf8b4a505bf73c62a977f510597e9a570e6",
+      "duration_seconds": 282.633288,
+      "width": 852,
+      "height": 480,
+      "fps": 29.97003
+    },
+    "audio_to_video_offset_seconds": 0.0,
+    "offset_convention": "video_time = audio_time + audio_to_video_offset_seconds",
+    "alignment_evidence": {
+      "method": "mono 8 kHz audio cross-correlation on the accepted MV proxy window",
+      "normalized_peak": 1.0,
+      "status": "PASS"
+    }
+  },
+  "regression": {
+    "baseline_event_preset": "hajimi-note-event-v1",
+    "baseline_event_path": "hajimi-remix/outputs/yuai_hajimi_event_v1/event-draft.json",
+    "baseline_event_sha256": "8704909a6691d9f3962bc070dbac4b11d88b36e640ed8f7a92243c732cf61897",
+    "baseline_run_id": null,
+    "baseline_dry_path": "hajimi-remix/work/yuai_event_v1/render-v1/yuai_hybrid_dry.wav",
+    "baseline_dry_sha256": "46a03fa765b40e4fc37e7696b85f9ac6c06a9cd674a0a7102e23377966828d1e",
+    "baseline_render_report_path": "hajimi-remix/outputs/yuai_hajimi_event_v1/render-report.json",
+    "baseline_render_report_sha256": "d66e74acb5b0b1f93a39be8c8065a388c9841d21dfc441a95ef92b469ca8f4c7",
+    "baseline_variant": "hybrid",
+    "f0_safety_group_ids": []
+  },
+  "selection": {
+    "mode": "accepted_golden_fixture",
+    "status": "SELECTED"
+  }
+}

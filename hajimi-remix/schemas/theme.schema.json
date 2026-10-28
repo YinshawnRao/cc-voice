@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cc-voice.local/schemas/hajimi/theme-v1.json",
+  "title": "Hajimi Rain Window Theme V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_kind",
+    "theme_id",
+    "preset",
+    "display",
+    "canvas",
+    "palette",
+    "typography",
+    "layout",
+    "visual_media",
+    "audio_reactivity",
+    "constraints"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "artifact_kind": { "const": "hajimi-mv-theme" },
+    "theme_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$" },
+    "preset": { "const": "hajimi-rain-window-v1" },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "title_en", "artist_label", "version", "credit", "status"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1, "maxLength": 24 },
+        "title_en": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "artist_label": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "version": { "const": "HAJIMI NOTE / EVENT V1" },
+        "credit": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "status": { "type": "string", "minLength": 1, "maxLength": 64 }
+      }
+    },
+    "canvas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "fps", "safe_area_px", "top_visual_height_px", "footer_height_px"],
+      "properties": {
+        "width": { "const": 1080 },
+        "height": { "const": 1920 },
+        "fps": { "const": 30 },
+        "safe_area_px": { "const": 72 },
+        "top_visual_height_px": { "const": 870 },
+        "footer_height_px": { "const": 140 }
+      }
+    },
+    "palette": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "cream", "cream_dark", "coral", "coral_dark", "gray", "light_gray"],
+      "properties": {
+        "ink": { "$ref": "#/$defs/color" },
+        "cream": { "$ref": "#/$defs/color" },
+        "cream_dark": { "$ref": "#/$defs/color" },
+        "coral": { "$ref": "#/$defs/color" },
+        "coral_dark": { "$ref": "#/$defs/color" },
+        "gray": { "$ref": "#/$defs/color" },
+        "light_gray": { "$ref": "#/$defs/color" }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["display", "cjk_display", "body", "mono", "font_preflight_status"],
+      "properties": {
+        "display": { "type": "string", "minLength": 1 },
+        "cjk_display": { "type": "string", "minLength": 1 },
+        "body": { "type": "string", "minLength": 1 },
+        "mono": { "type": "string", "minLength": 1 },
+        "font_preflight_status": { "const": "PASS" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["top_window", "window_inner", "lower_content", "footer"],
+      "properties": {
+        "top_window": { "$ref": "#/$defs/topWindow" },
+        "window_inner": { "$ref": "#/$defs/windowInner" },
+        "lower_content": { "$ref": "#/$defs/lowerContent" },
+        "footer": { "$ref": "#/$defs/footer" }
+      }
+    },
+    "visual_media": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "manifest_path"],
+      "properties": {
+        "mode": { "enum": ["source_mv_window", "generated_fallback"] },
+        "manifest_path": {
+          "oneOf": [
+            { "$ref": "#/$defs/relativePath" },
+            { "type": "null" }
+          ]
+        },
+        "muted": { "const": true },
+        "fit": { "enum": ["pre_cropped_cover", "generated_fill"] }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "mode": { "const": "source_mv_window" } }, "required": ["mode"] },
+          "then": {
+            "required": ["manifest_path", "muted", "fit"],
+            "properties": { "manifest_path": { "$ref": "#/$defs/relativePath" }, "fit": { "const": "pre_cropped_cover" } }
+          }
+        },
+        {
+          "if": { "properties": { "mode": { "const": "generated_fallback" } }, "required": ["mode"] },
+          "then": {
+            "properties": { "manifest_path": { "type": "null" }, "fit": { "const": "generated_fill" } }
+          }
+        }
+      ]
+    },
+    "audio_reactivity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "runtime_analysis", "fps", "band_count"],
+      "properties": {
+        "source": { "$ref": "#/$defs/relativePath" },
+        "runtime_analysis": { "const": false },
+        "fps": { "const": 30 },
+        "band_count": { "const": 16 }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    }
+  },
+  "$comment": "Builder must derive title size from measured text, consume every display/media field, reject remote runtime assets, and use one continuous root-level video plus one root-level audio element.",
+  "$defs": {
+    "color": { "type": "string", "pattern": "^#[A-Fa-f0-9]{6}$" },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$)).+$"
+    },
+    "topWindow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height", "border_px"],
+      "properties": {
+        "x": { "const": 72 },
+        "y": { "const": 160 },
+        "width": { "const": 936 },
+        "height": { "const": 650 },
+        "border_px": { "const": 4 }
+      }
+    },
+    "windowInner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height"],
+      "properties": {
+        "x": { "const": 76 },
+        "y": { "const": 164 },
+        "width": { "const": 928 },
+        "height": { "const": 642 }
+      }
+    },
+    "lowerContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height"],
+      "properties": {
+        "x": { "const": 72 },
+        "y": { "const": 870 },
+        "width": { "const": 936 },
+        "height": { "const": 910 }
+      }
+    },
+    "footer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height"],
+      "properties": {
+        "x": { "const": 72 },
+        "y": { "const": 1780 },
+        "width": { "const": 936 },
+        "height": { "const": 140 }
+      }
+    }
+  }
+}

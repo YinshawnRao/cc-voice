@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "preset_id": "hajimi-note-event-v1.1",
+  "preset_version": 1,
+  "status": "FROZEN_INTERNAL_BASELINE",
+  "extends": "hajimi-note-event-v1",
+  "scope": {
+    "minimum_window_seconds": 20,
+    "maximum_window_seconds": 75,
+    "sample_rate_hz": 44100,
+    "production_variant": "hybrid_v1p1",
+    "change_scope": "sustain_extension_only"
+  },
+  "sustain_extension": {
+    "method": "phase_locked_microcycle",
+    "repitch_scope": "whole_group_frozen_v1",
+    "pitch_floor_hz": 120,
+    "pitch_ceiling_hz": 700,
+    "shortest_lag_within_best_ratio": 0.98,
+    "production_selected_ncc_min": 0.8,
+    "preview_selected_ncc_min": 0.65,
+    "production_split_half_delta_percent_max": 5.0,
+    "preview_split_half_delta_percent_max": 10.0,
+    "minimum_source_periods": 10,
+    "microcycle_periods": 8,
+    "overlap_periods": 2,
+    "minimum_overlap_samples": 4,
+    "f0_safety_policy": "EXPLICIT_V1_GROUP_FALLBACK_AND_RECORD",
+    "f0_safety_event_median_octave_threshold_cents": 600,
+    "f0_safety_maximum_group_ratio": 0.05,
+    "short_target_policy": "CENTER_CROP_V1",
+    "low_confidence_policy": "FAIL_CLOSED"
+  },
+  "qa": {
+    "bubble_proxy": {
+      "roi_start_after_stable_ms": 25,
+      "roi_end_before_render_ms": 20,
+      "minimum_roi_ms": 140,
+      "envelope_sample_rate_hz": 200,
+      "welch_nperseg_max": 128,
+      "numerator_hz": [6, 30],
+      "denominator_hz": [1, 45],
+      "per_song_relative_median_reduction_min": 0.35,
+      "per_song_median_max": 0.5,
+      "per_song_p90_max": 0.85,
+      "combined_relative_median_reduction_min": 0.4
+    },
+    "envelope_cv": {
+      "median_max": 0.2,
+      "p90_max": 0.3,
+      "too_straight_warn_below": 0.06
+    },
+    "independent_f0": {
+      "backend": "pyworld_harvest_stonemask",
+      "hop_ms": 5,
+      "floor_hz": 70,
+      "ceiling_hz": 900,
+      "stable_trim_ms": 10,
+      "median_abs_cents_max": 20,
+      "p90_abs_cents_max": 50,
+      "event_median_octave_error_count_max": 0,
+      "frame_octave_error_rate_max": 0.01,
+      "p90_regression_vs_v1_cents_max": 10
+    },
+    "spectral": {
+      "centroid_relative_delta_max": 0.1,
+      "presence_4_8k_delta_db_max": 1.5
+    },
+    "seam_local_derivative_ratio_max": 1.5
+  },
+  "resources": {
+    "numerical_library_threads": 2,
+    "ffmpeg_threads": 2,
+    "concurrent_heavy_tasks": 1,
+    "render_mix_wall_seconds_absolute_max": 10,
+    "render_mix_wall_ratio_vs_v1_max": 1.5,
+    "render_mix_rss_mb_absolute_max": 1600,
+    "render_mix_rss_ratio_vs_v1_max": 1.25,
+    "swapout_pages_max": 0
+  }
+}

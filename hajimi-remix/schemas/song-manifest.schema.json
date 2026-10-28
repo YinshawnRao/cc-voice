@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cc-voice.local/schemas/hajimi/song-manifest-v1.json",
+  "title": "Hajimi Materialized Song Manifest V1",
+  "description": "Immutable per-run truth materialized from an editable recipe. Cross-file hashes and exact frame equality remain CLI gates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "artifact_kind", "song_id", "run_id", "status",
+    "display", "source", "window", "audio", "sections", "mv", "inputs", "created_at"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "artifact_kind": { "const": "hajimi-song-manifest" },
+    "song_id": { "$ref": "#/$defs/slug" },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9]{8}_[a-z0-9][a-z0-9_-]*_(hev1|hev1p1)_r[0-9]{2}$"
+    },
+    "status": {
+      "enum": [
+        "AUTO_DRAFTED", "EVENT_APPROVED", "AUDIO_RENDERED",
+        "AUDIO_AUTO_QA_PASS", "AUDIO_HUMAN_APPROVED", "PACKAGED"
+      ]
+    },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "title_en", "artist_label", "credit", "status"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1, "maxLength": 24 },
+        "title_en": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "artist_label": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "credit": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "status": { "type": "string", "minLength": 1, "maxLength": 96 }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["guide", "instrumental"],
+      "properties": {
+        "guide": { "$ref": "#/$defs/sourceFile" },
+        "instrumental": { "$ref": "#/$defs/sourceFile" },
+        "original_mix": { "$ref": "#/$defs/sourceFile" }
+      }
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start_seconds", "end_seconds", "approval_note"],
+      "properties": {
+        "start_seconds": { "type": "number", "minimum": 0 },
+        "end_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "approval_note": { "type": "string", "minLength": 1, "maxLength": 500 }
+      },
+      "$comment": "CLI enforces end > start and a 20-75 second window."
+    },
+    "audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_preset", "event_preset_sha256", "mix_preset", "mix_preset_sha256",
+        "midi_min", "midi_max", "pitch_floor_hz", "pitch_ceiling_hz",
+        "bridge_gap_seconds", "climax_seconds", "structure_points_seconds"
+      ],
+      "properties": {
+        "event_preset": { "enum": ["hajimi-note-event-v1", "hajimi-note-event-v1.1"] },
+        "event_preset_sha256": { "$ref": "#/$defs/sha256" },
+        "mix_preset": { "const": "hajimi-pop-v1" },
+        "mix_preset_sha256": { "$ref": "#/$defs/sha256" },
+        "midi_min": { "type": "integer", "minimum": 24, "maximum": 96 },
+        "midi_max": { "type": "integer", "minimum": 24, "maximum": 108 },
+        "pitch_floor_hz": { "type": "number", "minimum": 40, "maximum": 400 },
+        "pitch_ceiling_hz": { "type": "number", "minimum": 200, "maximum": 1600 },
+        "bridge_gap_seconds": { "type": "number", "minimum": 0, "maximum": 0.28 },
+        "climax_seconds": { "type": "number", "minimum": 0, "maximum": 75 },
+        "structure_points_seconds": {
+          "type": "array",
+          "items": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": { "$ref": "#/$defs/section" }
+    },
+    "mv": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preset", "visual_manifest", "show_bpm"],
+      "properties": {
+        "preset": { "const": "hajimi-rain-window-v1" },
+        "visual_manifest": {
+          "oneOf": [{ "$ref": "#/$defs/relativePath" }, { "type": "null" }]
+        },
+        "show_bpm": { "type": "boolean" }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["guide", "instrumental"],
+      "properties": {
+        "guide": { "$ref": "#/$defs/materializedAudio" },
+        "instrumental": { "$ref": "#/$defs/materializedAudio" }
+      },
+      "$comment": "CLI enforces identical sample rate and frame count; silent truncation is forbidden."
+    },
+    "production_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recipe_sha256", "event_preset", "event_preset_sha256", "renderer_sha256", "wrapper_sha256"],
+      "properties": {
+        "recipe_sha256": { "$ref": "#/$defs/sha256" },
+        "event_preset": { "enum": ["hajimi-note-event-v1", "hajimi-note-event-v1.1"] },
+        "event_preset_sha256": { "$ref": "#/$defs/sha256" },
+        "renderer_sha256": { "$ref": "#/$defs/sha256" },
+        "wrapper_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "audio": { "properties": { "event_preset": { "const": "hajimi-note-event-v1" } } } }
+      },
+      "then": { "properties": { "run_id": { "pattern": "_hev1_r[0-9]{2}$" } } }
+    },
+    {
+      "if": {
+        "properties": { "audio": { "properties": { "event_preset": { "const": "hajimi-note-event-v1.1" } } } }
+      },
+      "then": { "properties": { "run_id": { "pattern": "_hev1p1_r[0-9]{2}$" } } }
+    },
+    {
+      "if": { "properties": { "status": { "enum": ["AUDIO_RENDERED", "AUDIO_AUTO_QA_PASS", "AUDIO_HUMAN_APPROVED", "PACKAGED"] } } },
+      "then": { "required": ["production_evidence"] }
+    }
+  ],
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]{1,63}$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "relativePath": { "type": "string", "minLength": 1, "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$)).+$" },
+    "sourceFile": {
+      "type": "object", "additionalProperties": false, "required": ["path", "sha256"],
+      "properties": { "path": { "$ref": "#/$defs/relativePath" }, "sha256": { "$ref": "#/$defs/sha256" } }
+    },
+    "materializedAudio": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "sample_rate", "channels", "frame_count", "duration_seconds"],
+      "properties": {
+        "path": { "$ref": "#/$defs/relativePath" }, "sha256": { "$ref": "#/$defs/sha256" },
+        "sample_rate": { "const": 44100 }, "channels": { "type": "integer", "minimum": 1, "maximum": 2 },
+        "frame_count": { "type": "integer", "minimum": 882000, "maximum": 3307500 },
+        "duration_seconds": { "type": "number", "minimum": 20, "maximum": 75 }
+      }
+    },
+    "section": {
+      "type": "object", "additionalProperties": false,
+      "required": ["phrase_ids", "role", "label", "descriptor"],
+      "properties": {
+        "phrase_ids": { "type": "array", "minItems": 1, "items": { "type": "integer", "minimum": 1 }, "uniqueItems": true },
+        "role": { "enum": ["open", "build", "climax", "outro"] },
+        "label": { "type": "string", "minLength": 1, "maxLength": 32 },
+        "descriptor": { "type": "string", "minLength": 1, "maxLength": 96 }
+      }
+    }
+  }
+}

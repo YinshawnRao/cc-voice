@@ -1,0 +1,315 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cc-voice.local/schemas/hajimi/event-approved-v1.json",
+  "title": "Hajimi Approved Note, Syllable and Phrase Events V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_kind",
+    "status",
+    "approved_from",
+    "approval",
+    "source",
+    "window",
+    "extractor",
+    "summary",
+    "events",
+    "syllable_groups"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "artifact_kind": { "const": "hajimi-note-event-approved" },
+    "status": { "const": "EVENT_APPROVED" },
+    "approved_from": { "$ref": "#/$defs/fileEvidence" },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewed_at", "reviewer", "decision", "notes"],
+      "properties": {
+        "reviewed_at": { "type": "string", "format": "date-time" },
+        "reviewer": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "decision": { "const": "APPROVED_FOR_HAJIMI_RENDER" },
+        "notes": { "type": "string", "minLength": 1, "maxLength": 2000 },
+        "manual_audition_event_ids": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1 },
+          "uniqueItems": true
+        },
+        "manual_audition_group_ids": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "performance_guard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input_was_pre_cropped", "maximum_input_duration_seconds", "analysis_backend"],
+      "properties": {
+        "input_was_pre_cropped": { "const": true },
+        "maximum_input_duration_seconds": { "const": 75 },
+        "analysis_backend": { "type": "string", "minLength": 1 }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vocal_stem", "sha256", "sample_rate", "channels", "source_offset_seconds"],
+      "properties": {
+        "vocal_stem": { "$ref": "#/$defs/relativePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "sample_rate": { "const": 44100 },
+        "channels": { "type": "integer", "minimum": 1, "maximum": 2 },
+        "source_offset_seconds": { "type": "number", "minimum": 0 }
+      }
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start_seconds", "end_seconds", "duration_seconds"],
+      "properties": {
+        "start_seconds": { "type": "number", "minimum": 0 },
+        "end_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "duration_seconds": { "type": "number", "minimum": 20, "maximum": 75 }
+      },
+      "$comment": "CLI must verify end - start equals duration and the source audio frame duration within one sample."
+    },
+    "extractor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hop_seconds",
+        "pitch_floor_hz",
+        "pitch_ceiling_hz",
+        "midi_range",
+        "register_correction",
+        "strength_threshold",
+        "rms_threshold_dbfs",
+        "cents_threshold",
+        "minimum_event_seconds",
+        "structure_points_relative_seconds",
+        "structure_reset_tolerance_seconds"
+      ],
+      "properties": {
+        "hop_seconds": { "const": 0.01 },
+        "pitch_floor_hz": { "type": "number", "minimum": 40, "maximum": 400 },
+        "pitch_ceiling_hz": { "type": "number", "minimum": 200, "maximum": 1600 },
+        "midi_range": {
+          "type": "array",
+          "prefixItems": [
+            { "type": "integer", "minimum": 24, "maximum": 96 },
+            { "type": "integer", "minimum": 24, "maximum": 108 }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "register_correction": { "type": "string", "minLength": 1 },
+        "strength_threshold": { "type": "number", "minimum": 0, "maximum": 1 },
+        "rms_threshold_dbfs": { "type": "number", "minimum": -100, "maximum": 0 },
+        "cents_threshold": { "type": "number", "exclusiveMinimum": 0, "maximum": 100 },
+        "minimum_event_seconds": { "const": 0.07 },
+        "structure_points_relative_seconds": {
+          "type": "array",
+          "items": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 },
+          "uniqueItems": true
+        },
+        "structure_reset_tolerance_seconds": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_count", "phrase_count", "syllable_group_count"],
+      "properties": {
+        "event_count": { "type": "integer", "minimum": 1 },
+        "phrase_count": { "type": "integer", "minimum": 1 },
+        "syllable_group_count": { "type": "integer", "minimum": 1 },
+        "stable_note_duration_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 },
+        "stable_note_coverage_ratio": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+        "events_with_detected_attack": { "type": "integer", "minimum": 0 },
+        "events_with_octave_fold": { "type": "integer", "minimum": 0 },
+        "frame_pitch_median_abs_cents": { "type": ["number", "null"], "minimum": 0 },
+        "frame_pitch_p90_abs_cents": { "type": ["number", "null"], "minimum": 0 }
+      }
+    },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/noteEvent" }
+    },
+    "syllable_groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/syllableGroup" }
+    },
+    "performance_measurement": { "$ref": "#/$defs/performanceMeasurement" }
+  },
+  "$comment": "CLI must enforce sequential unique ids, sorted non-overlapping times, exact note coverage by syllable groups, one phrase per group, phrase resets, and all events inside the approved window.",
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$)).+$"
+    },
+    "fileEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "$ref": "#/$defs/relativePath" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "noteEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "phrase_id",
+        "source_start_seconds",
+        "source_end_seconds",
+        "relative_start_seconds",
+        "relative_end_seconds",
+        "duration_seconds",
+        "quantized_midi",
+        "note_name",
+        "pitch",
+        "attack",
+        "rest_before_seconds",
+        "rest_before_analysis",
+        "phrase_reset_hint",
+        "structure_boundary_distance_seconds",
+        "rest_after_seconds",
+        "line_break_candidate_hint",
+        "phrase_end_hint"
+      ],
+      "properties": {
+        "event_id": { "type": "integer", "minimum": 1 },
+        "phrase_id": { "type": "integer", "minimum": 1 },
+        "source_start_seconds": { "type": "number", "minimum": 0 },
+        "source_end_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "relative_start_seconds": { "type": "number", "minimum": 0, "maximum": 75 },
+        "relative_end_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 },
+        "duration_seconds": { "type": "number", "minimum": 0.07, "maximum": 75 },
+        "quantized_midi": { "type": "integer", "minimum": 24, "maximum": 108 },
+        "note_name": { "type": "string", "pattern": "^[A-G](#|b)?-?[0-9]+$" },
+        "pitch": { "$ref": "#/$defs/pitch" },
+        "attack": { "$ref": "#/$defs/attack" },
+        "rest_before_seconds": { "type": ["number", "null"], "minimum": 0 },
+        "rest_before_analysis": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["gap_rms_dbfs", "explicit_rest_hint"],
+          "properties": {
+            "gap_rms_dbfs": { "type": ["number", "null"], "maximum": 0 },
+            "explicit_rest_hint": { "type": "boolean" }
+          }
+        },
+        "phrase_reset_hint": { "type": "boolean" },
+        "structure_boundary_distance_seconds": { "type": ["number", "null"], "minimum": 0 },
+        "rest_after_seconds": { "type": "number", "minimum": 0 },
+        "line_break_candidate_hint": { "type": "boolean" },
+        "phrase_end_hint": { "type": "boolean" }
+      }
+    },
+    "pitch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_f0_median_hz",
+        "corrected_f0_median_hz",
+        "median_cents_from_equal_temperament",
+        "p90_abs_cents",
+        "correction_reason"
+      ],
+      "properties": {
+        "raw_f0_median_hz": { "type": "number", "exclusiveMinimum": 0 },
+        "corrected_f0_median_hz": { "type": "number", "exclusiveMinimum": 0 },
+        "median_cents_from_equal_temperament": { "type": "number" },
+        "p90_abs_cents": { "type": "number", "minimum": 0 },
+        "correction_reason": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "none",
+              "octave_up_to_allowed_register",
+              "octave_down_to_allowed_register"
+            ]
+          }
+        }
+      }
+    },
+    "attack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "detected",
+        "relative_onset_seconds",
+        "pitch_stability_lead_ms",
+        "normalized_strength",
+        "confidence"
+      ],
+      "properties": {
+        "detected": { "type": "boolean" },
+        "relative_onset_seconds": { "type": ["number", "null"], "minimum": 0, "maximum": 75 },
+        "pitch_stability_lead_ms": { "type": ["number", "null"] },
+        "normalized_strength": { "type": ["number", "null"], "minimum": 0 },
+        "confidence": { "enum": ["low", "medium", "high"] },
+        "fallback": { "enum": ["stable_pitch_entry"] }
+      }
+    },
+    "syllableGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "group_id",
+        "phrase_id",
+        "token",
+        "attack_start_seconds",
+        "stable_start_seconds",
+        "stable_end_seconds",
+        "render_end_seconds",
+        "note_event_ids",
+        "qa_flags"
+      ],
+      "properties": {
+        "group_id": { "type": "integer", "minimum": 1 },
+        "phrase_id": { "type": "integer", "minimum": 1 },
+        "token": { "enum": ["哈", "基", "米", "南", "北", "绿", "豆"] },
+        "attack_start_seconds": { "type": "number", "minimum": 0, "maximum": 75 },
+        "stable_start_seconds": { "type": "number", "minimum": 0, "maximum": 75 },
+        "stable_end_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 },
+        "render_end_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 },
+        "note_event_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "integer", "minimum": 1 },
+          "uniqueItems": true
+        },
+        "bridged_unstable_gap_seconds": { "type": ["number", "null"], "minimum": 0, "maximum": 0.28 },
+        "qa_flags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "performanceMeasurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wall_seconds", "user_cpu_seconds", "system_cpu_seconds", "max_resident_set_mb", "swap_count"],
+      "properties": {
+        "wall_seconds": { "type": "number", "minimum": 0 },
+        "user_cpu_seconds": { "type": "number", "minimum": 0 },
+        "system_cpu_seconds": { "type": "number", "minimum": 0 },
+        "max_resident_set_mb": { "type": "number", "minimum": 0 },
+        "swap_count": { "const": 0 }
+      }
+    }
+  }
+}

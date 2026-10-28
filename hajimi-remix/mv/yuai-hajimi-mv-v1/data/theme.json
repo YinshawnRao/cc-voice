@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "theme_id": "rain-loop-coral",
+  "name": "RAIN LOOP / 雨窗播放器",
+  "canvas": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "safe_area_px": 72,
+    "top_visual_height_px": 870,
+    "footer_height_px": 140
+  },
+  "palette": {
+    "ink": "#1A1A1A",
+    "cream": "#F5F0E8",
+    "cream_dark": "#E8E0D4",
+    "coral": "#E85D5D",
+    "coral_dark": "#D44A4A",
+    "gray": "#6B6B6B"
+  },
+  "typography": {
+    "display": "Bebas Neue, Arial Narrow, sans-serif",
+    "cjk_display": "Songti SC, STSong, serif",
+    "body": "Inter, PingFang SC, sans-serif",
+    "mono": "SFMono-Regular, Menlo, monospace"
+  },
+  "layout": {
+    "top_window": {
+      "x": 72,
+      "y": 160,
+      "width": 936,
+      "height": 650
+    },
+    "lower_content": {
+      "x": 72,
+      "y": 870,
+      "width": 936,
+      "height": 910
+    },
+    "footer": {
+      "x": 72,
+      "y": 1780,
+      "width": 936,
+      "height": 140
+    }
+  },
+  "visual_media": {
+    "mode": "source_mv_window",
+    "path": "assets/yuai-official-mv-window.mp4",
+    "source_url": "https://www.youtube.com/watch?v=oec9R5ypf-o",
+    "source_title": "楊丞琳 Rainie Yang - 雨愛",
+    "source_channel": "Rainie Yang's Official Channel楊丞琳官方專屬頻道",
+    "source_start_seconds": 66.45,
+    "source_end_seconds": 116.6,
+    "proxy_duration_seconds": 50.15,
+    "proxy_sha256": "29d235d04d6a5341ee631112a294a3856727e885b4d0d26aaf1101a52f381693",
+    "proxy_keyframe_interval_max_seconds": 1.001,
+    "muted": true,
+    "fit": "pre_cropped_cover",
+    "window_inner": {
+      "x": 76,
+      "y": 164,
+      "width": 928,
+      "height": 642
+    },
+    "alignment": {
+      "method": "mono_8khz_audio_cross_correlation",
+      "probe_window_seconds": [60, 90],
+      "lag_seconds": 0.0,
+      "normalized_peak": 1.0
+    }
+  },
+  "audio_reactivity": {
+    "mid": "current lyric lift",
+    "source": "data/audio-bands.json",
+    "runtime_analysis": false
+  },
+  "constraints": [
+    "No remote assets or fonts",
+    "No waveform or equalizer-bar visual",
+    "No particle engine, Three.js, or concurrent video streams",
+    "No full-screen flash",
+    "No rounded rectangles or drop shadows",
+    "Only one current syllable may be highlighted",
+    "Keep load-bearing text inside the 72px side safe area and above the 1780px footer boundary"
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cc-voice.local/schemas/hajimi/timed-lyrics-v1.json",
+  "title": "Hajimi Timed Lyrics V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_kind",
+    "timebase",
+    "audio",
+    "source_window",
+    "display",
+    "sections",
+    "phrases",
+    "lines",
+    "syllables",
+    "audit"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "artifact_kind": { "const": "hajimi-timed-lyrics" },
+    "timebase": { "const": "seconds" },
+    "audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "duration_seconds", "sample_rate", "channels", "frame_count"],
+      "properties": {
+        "path": { "$ref": "#/$defs/relativePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "duration_seconds": { "type": "number", "minimum": 20, "maximum": 75 },
+        "sample_rate": { "const": 44100 },
+        "channels": { "const": 2 },
+        "frame_count": { "type": "integer", "minimum": 882000, "maximum": 3307500 }
+      }
+    },
+    "source_window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start_seconds", "end_seconds"],
+      "properties": {
+        "start_seconds": { "type": "number", "minimum": 0 },
+        "end_seconds": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "title_en", "artist_label", "version", "credit", "status"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1, "maxLength": 24 },
+        "title_en": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "artist_label": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "version": { "const": "HAJIMI NOTE / EVENT V1" },
+        "credit": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "status": { "type": "string", "minLength": 1, "maxLength": 64 }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": { "$ref": "#/$defs/section" }
+    },
+    "phrases": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/phrase" }
+    },
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/line" }
+    },
+    "syllables": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/syllable" }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_approved_path",
+        "event_approved_sha256",
+        "render_report_path",
+        "render_report_sha256",
+        "syllable_group_count",
+        "note_event_count",
+        "highlight_overlap_count",
+        "caption_coverage",
+        "manual_audition_flags"
+      ],
+      "properties": {
+        "event_approved_path": { "$ref": "#/$defs/relativePath" },
+        "event_approved_sha256": { "$ref": "#/$defs/sha256" },
+        "render_report_path": { "$ref": "#/$defs/relativePath" },
+        "render_report_sha256": { "$ref": "#/$defs/sha256" },
+        "syllable_group_count": { "type": "integer", "minimum": 1 },
+        "note_event_count": { "type": "integer", "minimum": 1 },
+        "highlight_overlap_count": { "const": 0 },
+        "caption_coverage": { "type": "string", "pattern": "^[1-9][0-9]*/[1-9][0-9]*$" },
+        "manual_audition_flags": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^g[0-9]{3,}$" },
+          "uniqueItems": true
+        }
+      }
+    }
+  },
+  "$comment": "CLI must verify exact event/group coverage, ids and counts, source-window duration, contiguous section tiling from zero to audio duration, phrase-aligned section boundaries, seven-token line chunks that never cross phrase resets, and at most one active syllable at every time.",
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$)).+$"
+    },
+    "positiveIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "integer", "minimum": 1 },
+      "uniqueItems": true
+    },
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "role", "label", "start_seconds", "end_seconds", "phrase_ids", "descriptor"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$" },
+        "role": { "enum": ["open", "build", "climax", "outro"] },
+        "label": { "type": "string", "minLength": 1, "maxLength": 32 },
+        "start_seconds": { "type": "number", "minimum": 0, "maximum": 75 },
+        "end_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 },
+        "phrase_ids": { "$ref": "#/$defs/positiveIds" },
+        "descriptor": { "type": "string", "minLength": 1, "maxLength": 96 }
+      }
+    },
+    "phrase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "group_ids", "start_seconds", "end_seconds", "text"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 1 },
+        "group_ids": { "$ref": "#/$defs/positiveIds" },
+        "start_seconds": { "type": "number", "minimum": 0, "maximum": 75 },
+        "end_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 },
+        "text": { "type": "string", "minLength": 1 }
+      }
+    },
+    "line": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "phrase_id", "text", "group_ids", "start_seconds", "end_seconds"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^line-[0-9]{2,}$" },
+        "phrase_id": { "type": "integer", "minimum": 1 },
+        "text": { "type": "string", "minLength": 1, "maxLength": 7 },
+        "group_ids": {
+          "allOf": [
+            { "$ref": "#/$defs/positiveIds" },
+            { "maxItems": 7 }
+          ]
+        },
+        "start_seconds": { "type": "number", "minimum": 0, "maximum": 75 },
+        "end_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 }
+      }
+    },
+    "syllable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "group_id",
+        "text",
+        "phrase_id",
+        "line_id",
+        "start_seconds",
+        "end_seconds",
+        "raw_audio_end_seconds",
+        "stable_start_seconds",
+        "stable_end_seconds",
+        "note_event_ids",
+        "qa_flags"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^g[0-9]{3,}$" },
+        "group_id": { "type": "integer", "minimum": 1 },
+        "text": { "enum": ["哈", "基", "米", "南", "北", "绿", "豆"] },
+        "phrase_id": { "type": "integer", "minimum": 1 },
+        "line_id": { "type": "string", "pattern": "^line-[0-9]{2,}$" },
+        "start_seconds": { "type": "number", "minimum": 0, "maximum": 75 },
+        "end_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 },
+        "raw_audio_end_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 },
+        "stable_start_seconds": { "type": "number", "minimum": 0, "maximum": 75 },
+        "stable_end_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 },
+        "note_event_ids": { "$ref": "#/$defs/positiveIds" },
+        "qa_flags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

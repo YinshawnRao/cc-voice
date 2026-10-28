@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cc-voice.local/schemas/hajimi/video-reuse-evidence-v1.json",
+  "title": "Hajimi Video Stream Reuse Evidence V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "artifact_kind", "status", "source_project", "source_raw",
+    "source_render_evidence", "source_final", "old_master", "new_master",
+    "old_timeline_signature", "new_timeline_signature", "visual_signature",
+    "renderer_sha256", "reuse_runtime_sha256", "video_only_raw", "checks", "created_at", "performance"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "artifact_kind": { "const": "hajimi-video-stream-reuse-evidence" },
+    "status": { "const": "VIDEO_STREAM_REUSED_TIMELINE_IDENTICAL" },
+    "source_project": { "type": "string", "minLength": 1 },
+    "source_raw": { "$ref": "#/$defs/artifact" },
+    "source_render_evidence": { "$ref": "#/$defs/artifact" },
+    "source_final": { "$ref": "#/$defs/artifact" },
+    "old_master": { "$ref": "#/$defs/audioArtifact" },
+    "new_master": { "$ref": "#/$defs/audioArtifact" },
+    "old_timeline_signature": { "$ref": "#/$defs/sha256" },
+    "new_timeline_signature": { "$ref": "#/$defs/sha256" },
+    "visual_signature": { "$ref": "#/$defs/sha256" },
+    "renderer_sha256": { "$ref": "#/$defs/sha256" },
+    "reuse_runtime_sha256": { "$ref": "#/$defs/sha256" },
+    "video_only_raw": { "$ref": "#/$defs/artifact" },
+    "checks": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sample_contract", "timeline_identity", "visual_identity", "video_packet_identity"],
+      "properties": {
+        "sample_contract": { "const": "PASS" },
+        "timeline_identity": { "const": "PASS" },
+        "visual_identity": { "const": "PASS" },
+        "video_packet_identity": { "const": "PASS" }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+    ,"performance": { "type": "object" }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "artifact": {
+      "type": "object", "additionalProperties": false, "required": ["path", "sha256"],
+      "properties": { "path": { "type": "string", "minLength": 1 }, "sha256": { "$ref": "#/$defs/sha256" } }
+    },
+    "audioArtifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "sample_rate", "channels", "sample_width_bytes", "frame_count"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 }, "sha256": { "$ref": "#/$defs/sha256" },
+        "sample_rate": { "const": 44100 }, "channels": { "const": 2 },
+        "sample_width_bytes": { "const": 3 }, "frame_count": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

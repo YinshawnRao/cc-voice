@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "preset_id": "hajimi-rain-window-v1",
+  "preset_version": 1,
+  "status": "FROZEN_INTERNAL_BASELINE",
+  "canvas": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "pixel_format": "yuv420p",
+    "color": "BT.709 SDR"
+  },
+  "layout": {
+    "safe_area": { "left": 72, "right": 1008 },
+    "top_visual": { "y": 0, "height": 870 },
+    "mv_frame": { "x": 72, "y": 160, "width": 936, "height": 650, "border_px": 4 },
+    "mv_inner": { "x": 76, "y": 164, "width": 928, "height": 642 },
+    "lower_content": { "y": 870, "height": 910 },
+    "footer": { "y": 1780, "height": 140 },
+    "mv_information_band_height": 72,
+    "mv_information_band_top_border_px": 3
+  },
+  "palette": {
+    "coral": "#E85D5D",
+    "coral_dark": "#D44A4A",
+    "ink": "#1A1A1A",
+    "cream": "#F5F0E8",
+    "cream_dark": "#E8E0D4",
+    "gray": "#6B6B6B",
+    "light_gray": "#B0B0B0"
+  },
+  "typography": {
+    "metadata_family": "Inter",
+    "metadata_weight": 700,
+    "metadata_tracking_px_min": 2,
+    "metadata_tracking_px_max": 4,
+    "cjk_display_family": "Songti SC, STSong, serif",
+    "cjk_title_px_steps": [142, 118, 96, 78],
+    "lyric_family": "PingFang SC, sans-serif",
+    "lyric_current_px": 80,
+    "lyric_adjacent_px": 30,
+    "lyric_active_scale": 1.06,
+    "lyric_active_y_px": -4,
+    "maximum_tokens_per_line": 7
+  },
+  "section_roles": {
+    "open": { "ground": "ink", "top": "coral", "lower": "cream", "accent": "coral" },
+    "build": { "ground": "cream_dark", "top": "cream", "lower": "ink", "accent": "coral" },
+    "climax": { "ground": "coral", "top": "ink", "lower": "coral", "accent": "cream" },
+    "outro": { "ground": "cream", "top": "cream_dark", "lower": "cream", "accent": "coral" }
+  },
+  "visual_proxy": {
+    "width": 928,
+    "height": 642,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "fps_min": 29.9,
+    "fps_max": 30,
+    "audio_stream_count": 0,
+    "keyframe_interval_seconds_max": 1.1,
+    "maximum_duration_delta_frames": 1,
+    "continuous_video_elements": 1
+  },
+  "tracks": {
+    "section_shell": 1,
+    "visual": 2,
+    "visual_information_band": 3,
+    "audio": 11
+  },
+  "audio_reactivity": {
+    "runtime_analysis": false,
+    "fps": 30,
+    "band_count": 16
+  },
+  "render": {
+    "hyperframes_version": "0.6.69",
+    "quality": "high",
+    "crf": 18,
+    "workers": 1,
+    "ffmpeg_threads": 2,
+    "sdr": true,
+    "post_mux_audio_codec": "aac-lc",
+    "post_mux_audio_bitrate_kbps": 320,
+    "post_mux_audio_sample_rate_hz": 44100,
+    "faststart": true
+  },
+  "qa": {
+    "strict_full_decode": true,
+    "video_stream_count": 1,
+    "audio_stream_count": 1,
+    "black_interval_seconds_min": 0.5,
+    "silence_interval_seconds_min": 1,
+    "silence_threshold_db": -35,
+    "maximum_simultaneous_highlights": 1,
+    "aac_master_lag_frames_max": 1,
+    "aac_master_loudness_delta_lu_max": 0.3,
+    "sample_section_boundaries_plus_minus_frames": 1,
+    "sample_end_margin_seconds": 0.1
+  },
+  "constraints": [
+    "NO_REMOTE_RUNTIME_ASSETS",
+    "ONE_CONTINUOUS_MUTED_VIDEO",
+    "ONE_AUTHORITATIVE_AUDIO_TRACK",
+    "NO_RUNTIME_AUDIO_ANALYSIS",
+    "NO_UNSEEDED_RANDOMNESS",
+    "NO_PARTICLE_ENGINE",
+    "NO_THREE_JS",
+    "NO_ROUNDED_RECTANGLES",
+    "NO_DROP_SHADOWS",
+    "NO_FULL_SCREEN_FLASH"
+  ]
+}

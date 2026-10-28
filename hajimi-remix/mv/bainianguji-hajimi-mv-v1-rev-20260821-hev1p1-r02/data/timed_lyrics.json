@@ -1,0 +1,2079 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "hajimi-timed-lyrics",
+  "timebase": "seconds",
+  "audio": {
+    "path": "assets/bgm.wav",
+    "sha256": "cb74ff7beffb58f5214df8da8eae835c4601da9b914deb00cee4d4415a1fa0c5",
+    "duration_seconds": 54.7,
+    "sample_rate": 44100,
+    "channels": 2,
+    "frame_count": 2412270
+  },
+  "source_window": {
+    "start_seconds": 30.3,
+    "end_seconds": 85.0
+  },
+  "display": {
+    "title": "百年孤寂",
+    "title_en": "Century of Solitude",
+    "artist_label": "王菲 / Faye Wong",
+    "version": "HAJIMI NOTE / EVENT V1",
+    "credit": "HAJIMI REMIX",
+    "status": "INTERNAL AUTO-DRAFT PREVIEW / HUMAN LISTENING PENDING"
+  },
+  "sections": [
+    {
+      "id": "01-open",
+      "role": "open",
+      "label": "OPEN",
+      "start_seconds": 0.0,
+      "end_seconds": 18.04,
+      "phrase_ids": [
+        1,
+        2
+      ],
+      "descriptor": "Dynamic V1 section mapped from phrase ids 1-2"
+    },
+    {
+      "id": "02-build",
+      "role": "build",
+      "label": "BUILD",
+      "start_seconds": 18.04,
+      "end_seconds": 23.67,
+      "phrase_ids": [
+        3
+      ],
+      "descriptor": "Dynamic V1 section mapped from phrase ids 3-3"
+    },
+    {
+      "id": "03-climax",
+      "role": "climax",
+      "label": "CLIMAX",
+      "start_seconds": 23.67,
+      "end_seconds": 24.955,
+      "phrase_ids": [
+        4
+      ],
+      "descriptor": "Dynamic V1 section mapped from phrase ids 4-4"
+    },
+    {
+      "id": "04-outro",
+      "role": "outro",
+      "label": "OUTRO",
+      "start_seconds": 24.955,
+      "end_seconds": 54.7,
+      "phrase_ids": [
+        5,
+        6
+      ],
+      "descriptor": "Dynamic V1 section mapped from phrase ids 5-6"
+    }
+  ],
+  "phrases": [
+    {
+      "id": 1,
+      "group_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "start_seconds": 0.0,
+      "end_seconds": 11.07,
+      "text": "哈基米南北绿豆哈基米南"
+    },
+    {
+      "id": 2,
+      "group_ids": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "start_seconds": 11.07,
+      "end_seconds": 18.04,
+      "text": "哈基米南北绿豆哈基"
+    },
+    {
+      "id": 3,
+      "group_ids": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "start_seconds": 18.04,
+      "end_seconds": 23.67,
+      "text": "哈基米南北绿豆哈基米南北绿"
+    },
+    {
+      "id": 4,
+      "group_ids": [
+        34
+      ],
+      "start_seconds": 23.67,
+      "end_seconds": 24.955,
+      "text": "哈"
+    },
+    {
+      "id": 5,
+      "group_ids": [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "start_seconds": 24.955,
+      "end_seconds": 28.92,
+      "text": "哈基米南北绿"
+    },
+    {
+      "id": 6,
+      "group_ids": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97
+      ],
+      "start_seconds": 28.92,
+      "end_seconds": 54.7,
+      "text": "哈基米南北绿豆哈基米南北绿豆哈基米南北绿豆哈基米南北绿豆哈基米南北绿豆哈基米南北绿豆哈基米南北绿豆哈基米南北绿豆哈"
+    }
+  ],
+  "lines": [
+    {
+      "id": "line-01",
+      "phrase_id": 1,
+      "text": "哈基米南北绿豆",
+      "group_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "start_seconds": 5.295,
+      "end_seconds": 8.11
+    },
+    {
+      "id": "line-02",
+      "phrase_id": 1,
+      "text": "哈基米南",
+      "group_ids": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "start_seconds": 8.11,
+      "end_seconds": 11.07
+    },
+    {
+      "id": "line-03",
+      "phrase_id": 2,
+      "text": "哈基米南北绿豆",
+      "group_ids": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "start_seconds": 11.07,
+      "end_seconds": 16.135
+    },
+    {
+      "id": "line-04",
+      "phrase_id": 2,
+      "text": "哈基",
+      "group_ids": [
+        19,
+        20
+      ],
+      "start_seconds": 16.135,
+      "end_seconds": 18.04
+    },
+    {
+      "id": "line-05",
+      "phrase_id": 3,
+      "text": "哈基米南北绿豆",
+      "group_ids": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "start_seconds": 18.04,
+      "end_seconds": 20.085
+    },
+    {
+      "id": "line-06",
+      "phrase_id": 3,
+      "text": "哈基米南北绿",
+      "group_ids": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "start_seconds": 20.085,
+      "end_seconds": 23.67
+    },
+    {
+      "id": "line-07",
+      "phrase_id": 4,
+      "text": "哈",
+      "group_ids": [
+        34
+      ],
+      "start_seconds": 23.67,
+      "end_seconds": 24.955
+    },
+    {
+      "id": "line-08",
+      "phrase_id": 5,
+      "text": "哈基米南北绿",
+      "group_ids": [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "start_seconds": 24.955,
+      "end_seconds": 28.92
+    },
+    {
+      "id": "line-09",
+      "phrase_id": 6,
+      "text": "哈基米南北绿豆",
+      "group_ids": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "start_seconds": 28.92,
+      "end_seconds": 31.775
+    },
+    {
+      "id": "line-10",
+      "phrase_id": 6,
+      "text": "哈基米南北绿豆",
+      "group_ids": [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ],
+      "start_seconds": 31.775,
+      "end_seconds": 34.79
+    },
+    {
+      "id": "line-11",
+      "phrase_id": 6,
+      "text": "哈基米南北绿豆",
+      "group_ids": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "start_seconds": 34.79,
+      "end_seconds": 38.505
+    },
+    {
+      "id": "line-12",
+      "phrase_id": 6,
+      "text": "哈基米南北绿豆",
+      "group_ids": [
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "start_seconds": 38.505,
+      "end_seconds": 41.41
+    },
+    {
+      "id": "line-13",
+      "phrase_id": 6,
+      "text": "哈基米南北绿豆",
+      "group_ids": [
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
+      ],
+      "start_seconds": 41.41,
+      "end_seconds": 44.405
+    },
+    {
+      "id": "line-14",
+      "phrase_id": 6,
+      "text": "哈基米南北绿豆",
+      "group_ids": [
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82
+      ],
+      "start_seconds": 44.405,
+      "end_seconds": 48.55
+    },
+    {
+      "id": "line-15",
+      "phrase_id": 6,
+      "text": "哈基米南北绿豆",
+      "group_ids": [
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89
+      ],
+      "start_seconds": 48.55,
+      "end_seconds": 52.275
+    },
+    {
+      "id": "line-16",
+      "phrase_id": 6,
+      "text": "哈基米南北绿豆",
+      "group_ids": [
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "start_seconds": 52.275,
+      "end_seconds": 54.27
+    },
+    {
+      "id": "line-17",
+      "phrase_id": 6,
+      "text": "哈",
+      "group_ids": [
+        97
+      ],
+      "start_seconds": 54.27,
+      "end_seconds": 54.7
+    }
+  ],
+  "syllables": [
+    {
+      "id": "g001",
+      "group_id": 1,
+      "text": "哈",
+      "phrase_id": 1,
+      "line_id": "line-01",
+      "start_seconds": 5.295,
+      "end_seconds": 5.575,
+      "raw_audio_end_seconds": 5.581,
+      "stable_start_seconds": 5.32,
+      "stable_end_seconds": 5.52,
+      "note_event_ids": [
+        1
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g002",
+      "group_id": 2,
+      "text": "基",
+      "phrase_id": 1,
+      "line_id": "line-01",
+      "start_seconds": 5.575,
+      "end_seconds": 5.76,
+      "raw_audio_end_seconds": 5.766,
+      "stable_start_seconds": 5.6,
+      "stable_end_seconds": 5.69,
+      "note_event_ids": [
+        2
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g003",
+      "group_id": 3,
+      "text": "米",
+      "phrase_id": 1,
+      "line_id": "line-01",
+      "start_seconds": 5.76,
+      "end_seconds": 6.565,
+      "raw_audio_end_seconds": 6.571,
+      "stable_start_seconds": 5.81,
+      "stable_end_seconds": 6.31,
+      "note_event_ids": [
+        3
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g004",
+      "group_id": 4,
+      "text": "南",
+      "phrase_id": 1,
+      "line_id": "line-01",
+      "start_seconds": 6.565,
+      "end_seconds": 6.745,
+      "raw_audio_end_seconds": 6.751,
+      "stable_start_seconds": 6.59,
+      "stable_end_seconds": 6.74,
+      "note_event_ids": [
+        4
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g005",
+      "group_id": 5,
+      "text": "北",
+      "phrase_id": 1,
+      "line_id": "line-01",
+      "start_seconds": 6.745,
+      "end_seconds": 6.905,
+      "raw_audio_end_seconds": 6.93,
+      "stable_start_seconds": 6.77,
+      "stable_end_seconds": 6.93,
+      "note_event_ids": [
+        5
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g006",
+      "group_id": 6,
+      "text": "绿",
+      "phrase_id": 1,
+      "line_id": "line-01",
+      "start_seconds": 6.905,
+      "end_seconds": 7.36,
+      "raw_audio_end_seconds": 7.38,
+      "stable_start_seconds": 6.93,
+      "stable_end_seconds": 7.38,
+      "note_event_ids": [
+        6
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g007",
+      "group_id": 7,
+      "text": "豆",
+      "phrase_id": 1,
+      "line_id": "line-01",
+      "start_seconds": 7.36,
+      "end_seconds": 7.46,
+      "raw_audio_end_seconds": 7.46,
+      "stable_start_seconds": 7.39,
+      "stable_end_seconds": 7.46,
+      "note_event_ids": [
+        7
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g008",
+      "group_id": 8,
+      "text": "哈",
+      "phrase_id": 1,
+      "line_id": "line-02",
+      "start_seconds": 8.11,
+      "end_seconds": 8.6,
+      "raw_audio_end_seconds": 8.606,
+      "stable_start_seconds": 8.16,
+      "stable_end_seconds": 8.41,
+      "note_event_ids": [
+        8,
+        9
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g009",
+      "group_id": 9,
+      "text": "基",
+      "phrase_id": 1,
+      "line_id": "line-02",
+      "start_seconds": 8.6,
+      "end_seconds": 8.955,
+      "raw_audio_end_seconds": 8.98,
+      "stable_start_seconds": 8.65,
+      "stable_end_seconds": 8.98,
+      "note_event_ids": [
+        10,
+        11
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g010",
+      "group_id": 10,
+      "text": "米",
+      "phrase_id": 1,
+      "line_id": "line-02",
+      "start_seconds": 8.955,
+      "end_seconds": 9.34,
+      "raw_audio_end_seconds": 9.346,
+      "stable_start_seconds": 8.98,
+      "stable_end_seconds": 9.31,
+      "note_event_ids": [
+        12
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g011",
+      "group_id": 11,
+      "text": "南",
+      "phrase_id": 1,
+      "line_id": "line-02",
+      "start_seconds": 9.34,
+      "end_seconds": 11.06,
+      "raw_audio_end_seconds": 11.06,
+      "stable_start_seconds": 9.39,
+      "stable_end_seconds": 11.06,
+      "note_event_ids": [
+        13,
+        14
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g012",
+      "group_id": 12,
+      "text": "哈",
+      "phrase_id": 2,
+      "line_id": "line-03",
+      "start_seconds": 11.07,
+      "end_seconds": 11.43,
+      "raw_audio_end_seconds": 11.43,
+      "stable_start_seconds": 11.12,
+      "stable_end_seconds": 11.43,
+      "note_event_ids": [
+        15
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g013",
+      "group_id": 13,
+      "text": "基",
+      "phrase_id": 2,
+      "line_id": "line-03",
+      "start_seconds": 12.2,
+      "end_seconds": 12.58,
+      "raw_audio_end_seconds": 12.586,
+      "stable_start_seconds": 12.24,
+      "stable_end_seconds": 12.52,
+      "note_event_ids": [
+        16
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g014",
+      "group_id": 14,
+      "text": "米",
+      "phrase_id": 2,
+      "line_id": "line-03",
+      "start_seconds": 12.58,
+      "end_seconds": 12.975,
+      "raw_audio_end_seconds": 12.981,
+      "stable_start_seconds": 12.65,
+      "stable_end_seconds": 12.84,
+      "note_event_ids": [
+        17
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g015",
+      "group_id": 15,
+      "text": "南",
+      "phrase_id": 2,
+      "line_id": "line-03",
+      "start_seconds": 12.975,
+      "end_seconds": 13.895,
+      "raw_audio_end_seconds": 13.901,
+      "stable_start_seconds": 13.0,
+      "stable_end_seconds": 13.86,
+      "note_event_ids": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g016",
+      "group_id": 16,
+      "text": "北",
+      "phrase_id": 2,
+      "line_id": "line-03",
+      "start_seconds": 13.895,
+      "end_seconds": 14.2,
+      "raw_audio_end_seconds": 14.2,
+      "stable_start_seconds": 13.92,
+      "stable_end_seconds": 14.2,
+      "note_event_ids": [
+        22
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g017",
+      "group_id": 17,
+      "text": "绿",
+      "phrase_id": 2,
+      "line_id": "line-03",
+      "start_seconds": 14.575,
+      "end_seconds": 14.985,
+      "raw_audio_end_seconds": 14.991,
+      "stable_start_seconds": 14.6,
+      "stable_end_seconds": 14.95,
+      "note_event_ids": [
+        23
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g018",
+      "group_id": 18,
+      "text": "豆",
+      "phrase_id": 2,
+      "line_id": "line-03",
+      "start_seconds": 14.985,
+      "end_seconds": 16.135,
+      "raw_audio_end_seconds": 16.16,
+      "stable_start_seconds": 15.01,
+      "stable_end_seconds": 16.16,
+      "note_event_ids": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g019",
+      "group_id": 19,
+      "text": "哈",
+      "phrase_id": 2,
+      "line_id": "line-04",
+      "start_seconds": 16.135,
+      "end_seconds": 16.22,
+      "raw_audio_end_seconds": 16.27,
+      "stable_start_seconds": 16.16,
+      "stable_end_seconds": 16.27,
+      "note_event_ids": [
+        35
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g020",
+      "group_id": 20,
+      "text": "基",
+      "phrase_id": 2,
+      "line_id": "line-04",
+      "start_seconds": 16.22,
+      "end_seconds": 16.44,
+      "raw_audio_end_seconds": 16.44,
+      "stable_start_seconds": 16.27,
+      "stable_end_seconds": 16.44,
+      "note_event_ids": [
+        36,
+        37
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g021",
+      "group_id": 21,
+      "text": "哈",
+      "phrase_id": 3,
+      "line_id": "line-05",
+      "start_seconds": 18.04,
+      "end_seconds": 18.155,
+      "raw_audio_end_seconds": 18.18,
+      "stable_start_seconds": 18.09,
+      "stable_end_seconds": 18.18,
+      "note_event_ids": [
+        38
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g022",
+      "group_id": 22,
+      "text": "基",
+      "phrase_id": 3,
+      "line_id": "line-05",
+      "start_seconds": 18.155,
+      "end_seconds": 18.245,
+      "raw_audio_end_seconds": 18.27,
+      "stable_start_seconds": 18.18,
+      "stable_end_seconds": 18.27,
+      "note_event_ids": [
+        39
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g023",
+      "group_id": 23,
+      "text": "米",
+      "phrase_id": 3,
+      "line_id": "line-05",
+      "start_seconds": 18.245,
+      "end_seconds": 18.665,
+      "raw_audio_end_seconds": 18.671,
+      "stable_start_seconds": 18.27,
+      "stable_end_seconds": 18.63,
+      "note_event_ids": [
+        40,
+        41,
+        42
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g024",
+      "group_id": 24,
+      "text": "南",
+      "phrase_id": 3,
+      "line_id": "line-05",
+      "start_seconds": 18.665,
+      "end_seconds": 18.73,
+      "raw_audio_end_seconds": 18.78,
+      "stable_start_seconds": 18.69,
+      "stable_end_seconds": 18.78,
+      "note_event_ids": [
+        43
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g025",
+      "group_id": 25,
+      "text": "北",
+      "phrase_id": 3,
+      "line_id": "line-05",
+      "start_seconds": 18.73,
+      "end_seconds": 19.47,
+      "raw_audio_end_seconds": 19.476,
+      "stable_start_seconds": 18.78,
+      "stable_end_seconds": 19.2,
+      "note_event_ids": [
+        44,
+        45,
+        46
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g026",
+      "group_id": 26,
+      "text": "绿",
+      "phrase_id": 3,
+      "line_id": "line-05",
+      "start_seconds": 19.47,
+      "end_seconds": 19.815,
+      "raw_audio_end_seconds": 19.821,
+      "stable_start_seconds": 19.52,
+      "stable_end_seconds": 19.59,
+      "note_event_ids": [
+        47
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g027",
+      "group_id": 27,
+      "text": "豆",
+      "phrase_id": 3,
+      "line_id": "line-05",
+      "start_seconds": 19.815,
+      "end_seconds": 20.085,
+      "raw_audio_end_seconds": 20.11,
+      "stable_start_seconds": 19.84,
+      "stable_end_seconds": 20.11,
+      "note_event_ids": [
+        48
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g028",
+      "group_id": 28,
+      "text": "哈",
+      "phrase_id": 3,
+      "line_id": "line-06",
+      "start_seconds": 20.085,
+      "end_seconds": 20.4,
+      "raw_audio_end_seconds": 20.406,
+      "stable_start_seconds": 20.11,
+      "stable_end_seconds": 20.2,
+      "note_event_ids": [
+        49
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g029",
+      "group_id": 29,
+      "text": "基",
+      "phrase_id": 3,
+      "line_id": "line-06",
+      "start_seconds": 20.4,
+      "end_seconds": 20.54,
+      "raw_audio_end_seconds": 20.54,
+      "stable_start_seconds": 20.45,
+      "stable_end_seconds": 20.54,
+      "note_event_ids": [
+        50
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g030",
+      "group_id": 30,
+      "text": "米",
+      "phrase_id": 3,
+      "line_id": "line-06",
+      "start_seconds": 20.99,
+      "end_seconds": 21.36,
+      "raw_audio_end_seconds": 21.366,
+      "stable_start_seconds": 21.02,
+      "stable_end_seconds": 21.17,
+      "note_event_ids": [
+        51
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g031",
+      "group_id": 31,
+      "text": "南",
+      "phrase_id": 3,
+      "line_id": "line-06",
+      "start_seconds": 21.36,
+      "end_seconds": 21.755,
+      "raw_audio_end_seconds": 21.761,
+      "stable_start_seconds": 21.41,
+      "stable_end_seconds": 21.57,
+      "note_event_ids": [
+        52
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g032",
+      "group_id": 32,
+      "text": "北",
+      "phrase_id": 3,
+      "line_id": "line-06",
+      "start_seconds": 21.755,
+      "end_seconds": 22.19,
+      "raw_audio_end_seconds": 22.196,
+      "stable_start_seconds": 21.78,
+      "stable_end_seconds": 22.1,
+      "note_event_ids": [
+        53
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g033",
+      "group_id": 33,
+      "text": "绿",
+      "phrase_id": 3,
+      "line_id": "line-06",
+      "start_seconds": 22.19,
+      "end_seconds": 23.52,
+      "raw_audio_end_seconds": 23.52,
+      "stable_start_seconds": 22.24,
+      "stable_end_seconds": 23.52,
+      "note_event_ids": [
+        54,
+        55
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g034",
+      "group_id": 34,
+      "text": "哈",
+      "phrase_id": 4,
+      "line_id": "line-07",
+      "start_seconds": 23.67,
+      "end_seconds": 23.87,
+      "raw_audio_end_seconds": 23.87,
+      "stable_start_seconds": 23.72,
+      "stable_end_seconds": 23.87,
+      "note_event_ids": [
+        56
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g035",
+      "group_id": 35,
+      "text": "哈",
+      "phrase_id": 5,
+      "line_id": "line-08",
+      "start_seconds": 24.955,
+      "end_seconds": 25.0,
+      "raw_audio_end_seconds": 25.08,
+      "stable_start_seconds": 24.98,
+      "stable_end_seconds": 25.08,
+      "note_event_ids": [
+        57
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g036",
+      "group_id": 36,
+      "text": "基",
+      "phrase_id": 5,
+      "line_id": "line-08",
+      "start_seconds": 25.0,
+      "end_seconds": 25.37,
+      "raw_audio_end_seconds": 25.376,
+      "stable_start_seconds": 25.08,
+      "stable_end_seconds": 25.32,
+      "note_event_ids": [
+        58
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g037",
+      "group_id": 37,
+      "text": "米",
+      "phrase_id": 5,
+      "line_id": "line-08",
+      "start_seconds": 25.37,
+      "end_seconds": 26.2,
+      "raw_audio_end_seconds": 26.206,
+      "stable_start_seconds": 25.4,
+      "stable_end_seconds": 26.06,
+      "note_event_ids": [
+        59,
+        60
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g038",
+      "group_id": 38,
+      "text": "南",
+      "phrase_id": 5,
+      "line_id": "line-08",
+      "start_seconds": 26.2,
+      "end_seconds": 26.78,
+      "raw_audio_end_seconds": 26.786,
+      "stable_start_seconds": 26.25,
+      "stable_end_seconds": 26.68,
+      "note_event_ids": [
+        61
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g039",
+      "group_id": 39,
+      "text": "北",
+      "phrase_id": 5,
+      "line_id": "line-08",
+      "start_seconds": 26.78,
+      "end_seconds": 27.355,
+      "raw_audio_end_seconds": 27.361,
+      "stable_start_seconds": 26.83,
+      "stable_end_seconds": 27.22,
+      "note_event_ids": [
+        62,
+        63
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g040",
+      "group_id": 40,
+      "text": "绿",
+      "phrase_id": 5,
+      "line_id": "line-08",
+      "start_seconds": 27.355,
+      "end_seconds": 28.92,
+      "raw_audio_end_seconds": 28.92,
+      "stable_start_seconds": 27.38,
+      "stable_end_seconds": 28.92,
+      "note_event_ids": [
+        64,
+        65
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g041",
+      "group_id": 41,
+      "text": "哈",
+      "phrase_id": 6,
+      "line_id": "line-09",
+      "start_seconds": 28.92,
+      "end_seconds": 29.32,
+      "raw_audio_end_seconds": 29.32,
+      "stable_start_seconds": 28.97,
+      "stable_end_seconds": 29.32,
+      "note_event_ids": [
+        66,
+        67
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g042",
+      "group_id": 42,
+      "text": "基",
+      "phrase_id": 6,
+      "line_id": "line-09",
+      "start_seconds": 30.185,
+      "end_seconds": 30.375,
+      "raw_audio_end_seconds": 30.381,
+      "stable_start_seconds": 30.21,
+      "stable_end_seconds": 30.28,
+      "note_event_ids": [
+        68
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g043",
+      "group_id": 43,
+      "text": "米",
+      "phrase_id": 6,
+      "line_id": "line-09",
+      "start_seconds": 30.375,
+      "end_seconds": 30.46,
+      "raw_audio_end_seconds": 30.51,
+      "stable_start_seconds": 30.4,
+      "stable_end_seconds": 30.51,
+      "note_event_ids": [
+        69
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g044",
+      "group_id": 44,
+      "text": "南",
+      "phrase_id": 6,
+      "line_id": "line-09",
+      "start_seconds": 30.46,
+      "end_seconds": 30.745,
+      "raw_audio_end_seconds": 30.77,
+      "stable_start_seconds": 30.51,
+      "stable_end_seconds": 30.77,
+      "note_event_ids": [
+        70
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g045",
+      "group_id": 45,
+      "text": "北",
+      "phrase_id": 6,
+      "line_id": "line-09",
+      "start_seconds": 30.745,
+      "end_seconds": 31.315,
+      "raw_audio_end_seconds": 31.321,
+      "stable_start_seconds": 30.77,
+      "stable_end_seconds": 31.22,
+      "note_event_ids": [
+        71,
+        72
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g046",
+      "group_id": 46,
+      "text": "绿",
+      "phrase_id": 6,
+      "line_id": "line-09",
+      "start_seconds": 31.315,
+      "end_seconds": 31.64,
+      "raw_audio_end_seconds": 31.646,
+      "stable_start_seconds": 31.34,
+      "stable_end_seconds": 31.46,
+      "note_event_ids": [
+        73
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g047",
+      "group_id": 47,
+      "text": "豆",
+      "phrase_id": 6,
+      "line_id": "line-09",
+      "start_seconds": 31.64,
+      "end_seconds": 31.775,
+      "raw_audio_end_seconds": 31.8,
+      "stable_start_seconds": 31.68,
+      "stable_end_seconds": 31.8,
+      "note_event_ids": [
+        74
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g048",
+      "group_id": 48,
+      "text": "哈",
+      "phrase_id": 6,
+      "line_id": "line-10",
+      "start_seconds": 31.775,
+      "end_seconds": 32.465,
+      "raw_audio_end_seconds": 32.49,
+      "stable_start_seconds": 31.8,
+      "stable_end_seconds": 32.49,
+      "note_event_ids": [
+        75,
+        76,
+        77
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g049",
+      "group_id": 49,
+      "text": "基",
+      "phrase_id": 6,
+      "line_id": "line-10",
+      "start_seconds": 32.465,
+      "end_seconds": 32.875,
+      "raw_audio_end_seconds": 32.881,
+      "stable_start_seconds": 32.49,
+      "stable_end_seconds": 32.71,
+      "note_event_ids": [
+        78
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g050",
+      "group_id": 50,
+      "text": "米",
+      "phrase_id": 6,
+      "line_id": "line-10",
+      "start_seconds": 32.875,
+      "end_seconds": 33.155,
+      "raw_audio_end_seconds": 33.161,
+      "stable_start_seconds": 32.9,
+      "stable_end_seconds": 33.05,
+      "note_event_ids": [
+        79
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g051",
+      "group_id": 51,
+      "text": "南",
+      "phrase_id": 6,
+      "line_id": "line-10",
+      "start_seconds": 33.155,
+      "end_seconds": 33.365,
+      "raw_audio_end_seconds": 33.39,
+      "stable_start_seconds": 33.18,
+      "stable_end_seconds": 33.39,
+      "note_event_ids": [
+        80
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g052",
+      "group_id": 52,
+      "text": "北",
+      "phrase_id": 6,
+      "line_id": "line-10",
+      "start_seconds": 33.365,
+      "end_seconds": 33.74,
+      "raw_audio_end_seconds": 33.746,
+      "stable_start_seconds": 33.39,
+      "stable_end_seconds": 33.72,
+      "note_event_ids": [
+        81,
+        82
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g053",
+      "group_id": 53,
+      "text": "绿",
+      "phrase_id": 6,
+      "line_id": "line-10",
+      "start_seconds": 33.74,
+      "end_seconds": 34.555,
+      "raw_audio_end_seconds": 34.561,
+      "stable_start_seconds": 33.77,
+      "stable_end_seconds": 34.37,
+      "note_event_ids": [
+        83,
+        84,
+        85
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g054",
+      "group_id": 54,
+      "text": "豆",
+      "phrase_id": 6,
+      "line_id": "line-10",
+      "start_seconds": 34.555,
+      "end_seconds": 34.79,
+      "raw_audio_end_seconds": 34.796,
+      "stable_start_seconds": 34.58,
+      "stable_end_seconds": 34.73,
+      "note_event_ids": [
+        86
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g055",
+      "group_id": 55,
+      "text": "哈",
+      "phrase_id": 6,
+      "line_id": "line-11",
+      "start_seconds": 34.79,
+      "end_seconds": 35.18,
+      "raw_audio_end_seconds": 35.186,
+      "stable_start_seconds": 34.82,
+      "stable_end_seconds": 35.01,
+      "note_event_ids": [
+        87
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g056",
+      "group_id": 56,
+      "text": "基",
+      "phrase_id": 6,
+      "line_id": "line-11",
+      "start_seconds": 35.18,
+      "end_seconds": 35.625,
+      "raw_audio_end_seconds": 35.631,
+      "stable_start_seconds": 35.24,
+      "stable_end_seconds": 35.46,
+      "note_event_ids": [
+        88
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g057",
+      "group_id": 57,
+      "text": "米",
+      "phrase_id": 6,
+      "line_id": "line-11",
+      "start_seconds": 35.625,
+      "end_seconds": 36.065,
+      "raw_audio_end_seconds": 36.09,
+      "stable_start_seconds": 35.65,
+      "stable_end_seconds": 36.09,
+      "note_event_ids": [
+        89
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g058",
+      "group_id": 58,
+      "text": "南",
+      "phrase_id": 6,
+      "line_id": "line-11",
+      "start_seconds": 36.065,
+      "end_seconds": 36.48,
+      "raw_audio_end_seconds": 36.486,
+      "stable_start_seconds": 36.09,
+      "stable_end_seconds": 36.38,
+      "note_event_ids": [
+        90
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g059",
+      "group_id": 59,
+      "text": "北",
+      "phrase_id": 6,
+      "line_id": "line-11",
+      "start_seconds": 36.48,
+      "end_seconds": 36.62,
+      "raw_audio_end_seconds": 36.626,
+      "stable_start_seconds": 36.53,
+      "stable_end_seconds": 36.6,
+      "note_event_ids": [
+        91
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g060",
+      "group_id": 60,
+      "text": "绿",
+      "phrase_id": 6,
+      "line_id": "line-11",
+      "start_seconds": 36.62,
+      "end_seconds": 36.91,
+      "raw_audio_end_seconds": 36.91,
+      "stable_start_seconds": 36.66,
+      "stable_end_seconds": 36.91,
+      "note_event_ids": [
+        92,
+        93
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g061",
+      "group_id": 61,
+      "text": "豆",
+      "phrase_id": 6,
+      "line_id": "line-11",
+      "start_seconds": 38.25,
+      "end_seconds": 38.505,
+      "raw_audio_end_seconds": 38.53,
+      "stable_start_seconds": 38.3,
+      "stable_end_seconds": 38.53,
+      "note_event_ids": [
+        94
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g062",
+      "group_id": 62,
+      "text": "哈",
+      "phrase_id": 6,
+      "line_id": "line-12",
+      "start_seconds": 38.505,
+      "end_seconds": 38.945,
+      "raw_audio_end_seconds": 38.97,
+      "stable_start_seconds": 38.53,
+      "stable_end_seconds": 38.97,
+      "note_event_ids": [
+        95
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g063",
+      "group_id": 63,
+      "text": "基",
+      "phrase_id": 6,
+      "line_id": "line-12",
+      "start_seconds": 38.945,
+      "end_seconds": 39.355,
+      "raw_audio_end_seconds": 39.38,
+      "stable_start_seconds": 38.97,
+      "stable_end_seconds": 39.38,
+      "note_event_ids": [
+        96,
+        97
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g064",
+      "group_id": 64,
+      "text": "米",
+      "phrase_id": 6,
+      "line_id": "line-12",
+      "start_seconds": 39.355,
+      "end_seconds": 40.08,
+      "raw_audio_end_seconds": 40.086,
+      "stable_start_seconds": 39.38,
+      "stable_end_seconds": 40.06,
+      "note_event_ids": [
+        98
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g065",
+      "group_id": 65,
+      "text": "南",
+      "phrase_id": 6,
+      "line_id": "line-12",
+      "start_seconds": 40.08,
+      "end_seconds": 40.215,
+      "raw_audio_end_seconds": 40.24,
+      "stable_start_seconds": 40.14,
+      "stable_end_seconds": 40.24,
+      "note_event_ids": [
+        99
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g066",
+      "group_id": 66,
+      "text": "北",
+      "phrase_id": 6,
+      "line_id": "line-12",
+      "start_seconds": 40.215,
+      "end_seconds": 40.385,
+      "raw_audio_end_seconds": 40.41,
+      "stable_start_seconds": 40.24,
+      "stable_end_seconds": 40.41,
+      "note_event_ids": [
+        100
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g067",
+      "group_id": 67,
+      "text": "绿",
+      "phrase_id": 6,
+      "line_id": "line-12",
+      "start_seconds": 40.385,
+      "end_seconds": 40.585,
+      "raw_audio_end_seconds": 40.591,
+      "stable_start_seconds": 40.41,
+      "stable_end_seconds": 40.56,
+      "note_event_ids": [
+        101
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g068",
+      "group_id": 68,
+      "text": "豆",
+      "phrase_id": 6,
+      "line_id": "line-12",
+      "start_seconds": 40.585,
+      "end_seconds": 41.41,
+      "raw_audio_end_seconds": 41.416,
+      "stable_start_seconds": 40.61,
+      "stable_end_seconds": 41.4,
+      "note_event_ids": [
+        102
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g069",
+      "group_id": 69,
+      "text": "哈",
+      "phrase_id": 6,
+      "line_id": "line-13",
+      "start_seconds": 41.41,
+      "end_seconds": 41.54,
+      "raw_audio_end_seconds": 41.54,
+      "stable_start_seconds": 41.44,
+      "stable_end_seconds": 41.54,
+      "note_event_ids": [
+        103
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g070",
+      "group_id": 70,
+      "text": "基",
+      "phrase_id": 6,
+      "line_id": "line-13",
+      "start_seconds": 41.935,
+      "end_seconds": 42.04,
+      "raw_audio_end_seconds": 42.04,
+      "stable_start_seconds": 41.96,
+      "stable_end_seconds": 42.04,
+      "note_event_ids": [
+        104
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g071",
+      "group_id": 71,
+      "text": "米",
+      "phrase_id": 6,
+      "line_id": "line-13",
+      "start_seconds": 43.13,
+      "end_seconds": 43.295,
+      "raw_audio_end_seconds": 43.301,
+      "stable_start_seconds": 43.18,
+      "stable_end_seconds": 43.27,
+      "note_event_ids": [
+        105
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g072",
+      "group_id": 72,
+      "text": "南",
+      "phrase_id": 6,
+      "line_id": "line-13",
+      "start_seconds": 43.295,
+      "end_seconds": 43.505,
+      "raw_audio_end_seconds": 43.53,
+      "stable_start_seconds": 43.32,
+      "stable_end_seconds": 43.53,
+      "note_event_ids": [
+        106
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g073",
+      "group_id": 73,
+      "text": "北",
+      "phrase_id": 6,
+      "line_id": "line-13",
+      "start_seconds": 43.505,
+      "end_seconds": 43.78,
+      "raw_audio_end_seconds": 43.786,
+      "stable_start_seconds": 43.53,
+      "stable_end_seconds": 43.75,
+      "note_event_ids": [
+        107
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g074",
+      "group_id": 74,
+      "text": "绿",
+      "phrase_id": 6,
+      "line_id": "line-13",
+      "start_seconds": 43.78,
+      "end_seconds": 44.155,
+      "raw_audio_end_seconds": 44.161,
+      "stable_start_seconds": 43.82,
+      "stable_end_seconds": 43.95,
+      "note_event_ids": [
+        108
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g075",
+      "group_id": 75,
+      "text": "豆",
+      "phrase_id": 6,
+      "line_id": "line-13",
+      "start_seconds": 44.155,
+      "end_seconds": 44.405,
+      "raw_audio_end_seconds": 44.43,
+      "stable_start_seconds": 44.18,
+      "stable_end_seconds": 44.43,
+      "note_event_ids": [
+        109
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g076",
+      "group_id": 76,
+      "text": "哈",
+      "phrase_id": 6,
+      "line_id": "line-14",
+      "start_seconds": 44.405,
+      "end_seconds": 44.58,
+      "raw_audio_end_seconds": 44.586,
+      "stable_start_seconds": 44.43,
+      "stable_end_seconds": 44.52,
+      "note_event_ids": [
+        110
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g077",
+      "group_id": 77,
+      "text": "基",
+      "phrase_id": 6,
+      "line_id": "line-14",
+      "start_seconds": 44.58,
+      "end_seconds": 44.89,
+      "raw_audio_end_seconds": 44.89,
+      "stable_start_seconds": 44.66,
+      "stable_end_seconds": 44.89,
+      "note_event_ids": [
+        111,
+        112
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g078",
+      "group_id": 78,
+      "text": "米",
+      "phrase_id": 6,
+      "line_id": "line-14",
+      "start_seconds": 45.435,
+      "end_seconds": 45.79,
+      "raw_audio_end_seconds": 45.796,
+      "stable_start_seconds": 45.46,
+      "stable_end_seconds": 45.53,
+      "note_event_ids": [
+        113
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g079",
+      "group_id": 79,
+      "text": "南",
+      "phrase_id": 6,
+      "line_id": "line-14",
+      "start_seconds": 45.79,
+      "end_seconds": 46.135,
+      "raw_audio_end_seconds": 46.141,
+      "stable_start_seconds": 45.84,
+      "stable_end_seconds": 46.04,
+      "note_event_ids": [
+        114
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g080",
+      "group_id": 80,
+      "text": "北",
+      "phrase_id": 6,
+      "line_id": "line-14",
+      "start_seconds": 46.135,
+      "end_seconds": 46.72,
+      "raw_audio_end_seconds": 46.72,
+      "stable_start_seconds": 46.16,
+      "stable_end_seconds": 46.72,
+      "note_event_ids": [
+        115,
+        116,
+        117,
+        118
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g081",
+      "group_id": 81,
+      "text": "绿",
+      "phrase_id": 6,
+      "line_id": "line-14",
+      "start_seconds": 47.44,
+      "end_seconds": 48.11,
+      "raw_audio_end_seconds": 48.116,
+      "stable_start_seconds": 47.49,
+      "stable_end_seconds": 47.99,
+      "note_event_ids": [
+        119
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g082",
+      "group_id": 82,
+      "text": "豆",
+      "phrase_id": 6,
+      "line_id": "line-14",
+      "start_seconds": 48.11,
+      "end_seconds": 48.55,
+      "raw_audio_end_seconds": 48.556,
+      "stable_start_seconds": 48.16,
+      "stable_end_seconds": 48.47,
+      "note_event_ids": [
+        120
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g083",
+      "group_id": 83,
+      "text": "哈",
+      "phrase_id": 6,
+      "line_id": "line-15",
+      "start_seconds": 48.55,
+      "end_seconds": 49.185,
+      "raw_audio_end_seconds": 49.191,
+      "stable_start_seconds": 48.6,
+      "stable_end_seconds": 48.99,
+      "note_event_ids": [
+        121,
+        122
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g084",
+      "group_id": 84,
+      "text": "基",
+      "phrase_id": 6,
+      "line_id": "line-15",
+      "start_seconds": 49.185,
+      "end_seconds": 49.775,
+      "raw_audio_end_seconds": 49.78,
+      "stable_start_seconds": 49.21,
+      "stable_end_seconds": 49.78,
+      "note_event_ids": [
+        123
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g085",
+      "group_id": 85,
+      "text": "米",
+      "phrase_id": 6,
+      "line_id": "line-15",
+      "start_seconds": 49.775,
+      "end_seconds": 49.895,
+      "raw_audio_end_seconds": 49.92,
+      "stable_start_seconds": 49.8,
+      "stable_end_seconds": 49.92,
+      "note_event_ids": [
+        124
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g086",
+      "group_id": 86,
+      "text": "南",
+      "phrase_id": 6,
+      "line_id": "line-15",
+      "start_seconds": 49.895,
+      "end_seconds": 50.07,
+      "raw_audio_end_seconds": 50.07,
+      "stable_start_seconds": 49.92,
+      "stable_end_seconds": 50.07,
+      "note_event_ids": [
+        125
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g087",
+      "group_id": 87,
+      "text": "北",
+      "phrase_id": 6,
+      "line_id": "line-15",
+      "start_seconds": 50.62,
+      "end_seconds": 50.925,
+      "raw_audio_end_seconds": 50.95,
+      "stable_start_seconds": 50.67,
+      "stable_end_seconds": 50.95,
+      "note_event_ids": [
+        126
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g088",
+      "group_id": 88,
+      "text": "绿",
+      "phrase_id": 6,
+      "line_id": "line-15",
+      "start_seconds": 50.925,
+      "end_seconds": 51.71,
+      "raw_audio_end_seconds": 51.716,
+      "stable_start_seconds": 50.95,
+      "stable_end_seconds": 51.57,
+      "note_event_ids": [
+        127,
+        128
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g089",
+      "group_id": 89,
+      "text": "豆",
+      "phrase_id": 6,
+      "line_id": "line-15",
+      "start_seconds": 51.71,
+      "end_seconds": 52.275,
+      "raw_audio_end_seconds": 52.28,
+      "stable_start_seconds": 51.76,
+      "stable_end_seconds": 52.28,
+      "note_event_ids": [
+        129
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g090",
+      "group_id": 90,
+      "text": "哈",
+      "phrase_id": 6,
+      "line_id": "line-16",
+      "start_seconds": 52.275,
+      "end_seconds": 52.545,
+      "raw_audio_end_seconds": 52.57,
+      "stable_start_seconds": 52.3,
+      "stable_end_seconds": 52.57,
+      "note_event_ids": [
+        130
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g091",
+      "group_id": 91,
+      "text": "基",
+      "phrase_id": 6,
+      "line_id": "line-16",
+      "start_seconds": 52.545,
+      "end_seconds": 52.775,
+      "raw_audio_end_seconds": 52.8,
+      "stable_start_seconds": 52.57,
+      "stable_end_seconds": 52.8,
+      "note_event_ids": [
+        131
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g092",
+      "group_id": 92,
+      "text": "米",
+      "phrase_id": 6,
+      "line_id": "line-16",
+      "start_seconds": 52.775,
+      "end_seconds": 52.89,
+      "raw_audio_end_seconds": 52.89,
+      "stable_start_seconds": 52.8,
+      "stable_end_seconds": 52.89,
+      "note_event_ids": [
+        132
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g093",
+      "group_id": 93,
+      "text": "南",
+      "phrase_id": 6,
+      "line_id": "line-16",
+      "start_seconds": 52.89,
+      "end_seconds": 53.315,
+      "raw_audio_end_seconds": 53.321,
+      "stable_start_seconds": 52.95,
+      "stable_end_seconds": 53.25,
+      "note_event_ids": [
+        133
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g094",
+      "group_id": 94,
+      "text": "北",
+      "phrase_id": 6,
+      "line_id": "line-16",
+      "start_seconds": 53.315,
+      "end_seconds": 53.845,
+      "raw_audio_end_seconds": 53.87,
+      "stable_start_seconds": 53.34,
+      "stable_end_seconds": 53.87,
+      "note_event_ids": [
+        134
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g095",
+      "group_id": 95,
+      "text": "绿",
+      "phrase_id": 6,
+      "line_id": "line-16",
+      "start_seconds": 53.845,
+      "end_seconds": 53.87,
+      "raw_audio_end_seconds": 53.94,
+      "stable_start_seconds": 53.87,
+      "stable_end_seconds": 53.94,
+      "note_event_ids": [
+        135
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g096",
+      "group_id": 96,
+      "text": "豆",
+      "phrase_id": 6,
+      "line_id": "line-16",
+      "start_seconds": 53.87,
+      "end_seconds": 54.27,
+      "raw_audio_end_seconds": 54.276,
+      "stable_start_seconds": 53.94,
+      "stable_end_seconds": 54.01,
+      "note_event_ids": [
+        136
+      ],
+      "qa_flags": []
+    },
+    {
+      "id": "g097",
+      "group_id": 97,
+      "text": "哈",
+      "phrase_id": 6,
+      "line_id": "line-17",
+      "start_seconds": 54.27,
+      "end_seconds": 54.62,
+      "raw_audio_end_seconds": 54.62,
+      "stable_start_seconds": 54.32,
+      "stable_end_seconds": 54.62,
+      "note_event_ids": [
+        137,
+        138,
+        139
+      ],
+      "qa_flags": []
+    }
+  ],
+  "audit": {
+    "event_approved_path": "hajimi-remix/outputs/bainianguji/20260820_bainianguji_hev1p1_r01/event-draft.json",
+    "event_approved_sha256": "6db0b8195548b453a6ab342dc11cd665d343c033ab235c455ebdbad35c9e07b8",
+    "render_report_path": "hajimi-remix/outputs/bainianguji/20260820_bainianguji_hev1p1_r01/render-report.json",
+    "render_report_sha256": "e14d44140c8a1efecf515b9c4147e0da891db450b66f3a358bfc56668fc836d1",
+    "syllable_group_count": 97,
+    "note_event_count": 139,
+    "highlight_overlap_count": 0,
+    "caption_coverage": "97/97",
+    "manual_audition_flags": []
+  }
+}

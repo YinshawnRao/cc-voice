@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cc-voice.local/schemas/hajimi/song-recipe-v1.json",
+  "title": "Hajimi Editable Song Recipe V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "artifact_kind", "song_id", "display", "presets", "source",
+    "window", "event_extraction", "arrangement", "voicebank", "mv"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "artifact_kind": { "const": "hajimi-song-recipe" },
+    "song_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]{1,63}$" },
+    "display": {
+      "type": "object", "additionalProperties": false,
+      "required": ["title_zh", "title_en", "artist_label", "hajimi_label"],
+      "properties": {
+        "title_zh": { "type": "string", "minLength": 1, "maxLength": 24 },
+        "title_en": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "artist_label": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "hajimi_label": { "type": "string", "minLength": 1, "maxLength": 64 }
+      }
+    },
+    "presets": {
+      "type": "object", "additionalProperties": false, "required": ["audio", "mix", "video"],
+      "properties": {
+        "audio": { "enum": ["hajimi-note-event-v1", "hajimi-note-event-v1.1"] },
+        "mix": { "const": "hajimi-pop-v1" },
+        "video": { "const": "hajimi-rain-window-v1" }
+      }
+    },
+    "source": {
+      "type": "object", "additionalProperties": false, "required": ["guide_vocal", "instrumental"],
+      "properties": {
+        "guide_vocal": { "$ref": "#/$defs/audioSource" },
+        "instrumental": { "$ref": "#/$defs/audioSource" }
+      }
+    },
+    "window": {
+      "type": "object", "additionalProperties": false,
+      "required": ["start_seconds", "end_seconds", "duration_seconds", "selection_evidence"],
+      "properties": {
+        "start_seconds": { "type": "number", "minimum": 0 },
+        "end_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "duration_seconds": { "type": "number", "minimum": 20, "maximum": 75 },
+        "selection_evidence": { "type": "string", "minLength": 1, "maxLength": 1000 }
+      }
+    },
+    "event_extraction": {
+      "type": "object", "additionalProperties": false,
+      "required": ["pitch_floor_hz", "pitch_ceiling_hz", "midi_min", "midi_max", "structure_points_relative_seconds"],
+      "properties": {
+        "pitch_floor_hz": { "type": "number", "minimum": 40, "maximum": 400 },
+        "pitch_ceiling_hz": { "type": "number", "minimum": 200, "maximum": 1600 },
+        "midi_min": { "type": "integer", "minimum": 24, "maximum": 96 },
+        "midi_max": { "type": "integer", "minimum": 24, "maximum": 108 },
+        "structure_points_relative_seconds": { "type": "array", "items": { "type": "number", "exclusiveMinimum": 0, "maximum": 75 }, "uniqueItems": true }
+      }
+    },
+    "arrangement": {
+      "type": "object", "additionalProperties": false, "required": ["climax_seconds", "bridge_gap_seconds", "sections"],
+      "properties": {
+        "climax_seconds": { "type": "number", "minimum": 0, "maximum": 75 },
+        "bridge_gap_seconds": { "type": "number", "minimum": 0, "maximum": 0.28 },
+        "sections": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "voicebank": {
+      "type": "object", "additionalProperties": false, "required": ["jp_sustain", "zh_attack"],
+      "properties": {
+        "jp_sustain": { "$ref": "#/$defs/fileHash" },
+        "zh_attack": { "$ref": "#/$defs/fileHash" }
+      }
+    },
+    "mv": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_video", "audio_to_video_offset_seconds", "offset_convention", "alignment_evidence"],
+      "properties": {
+        "source_video": {
+          "type": "object", "additionalProperties": false,
+          "required": ["path", "sha256", "duration_seconds", "width", "height", "fps"],
+          "properties": {
+            "path": { "type": "string", "minLength": 1 }, "sha256": { "$ref": "#/$defs/sha256" },
+            "duration_seconds": { "type": "number", "exclusiveMinimum": 0 },
+            "width": { "type": "integer", "minimum": 1 }, "height": { "type": "integer", "minimum": 1 },
+            "fps": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        "audio_to_video_offset_seconds": { "type": "number", "minimum": -30, "maximum": 30 },
+        "offset_convention": { "const": "video_time = audio_time + audio_to_video_offset_seconds" },
+        "alignment_evidence": { "type": "object", "required": ["method", "status"], "properties": { "method": { "type": "string", "minLength": 1 }, "status": { "const": "PASS" } } }
+      }
+    },
+    "regression": {
+      "type": "object", "additionalProperties": false,
+      "required": ["baseline_event_preset", "baseline_event_path", "baseline_event_sha256", "baseline_dry_path", "baseline_dry_sha256", "baseline_render_report_path", "baseline_render_report_sha256", "baseline_variant", "f0_safety_group_ids"],
+      "properties": {
+        "baseline_event_preset": { "const": "hajimi-note-event-v1" },
+        "baseline_event_path": { "$ref": "#/$defs/relativePath" },
+        "baseline_event_sha256": { "$ref": "#/$defs/sha256" },
+        "baseline_run_id": { "type": ["string", "null"] },
+        "baseline_dry_path": { "$ref": "#/$defs/relativePath" },
+        "baseline_dry_sha256": { "$ref": "#/$defs/sha256" },
+        "baseline_render_report_path": { "$ref": "#/$defs/relativePath" },
+        "baseline_render_report_sha256": { "$ref": "#/$defs/sha256" },
+        "baseline_variant": { "const": "hybrid" },
+        "f0_safety_group_ids": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "selection": { "type": "object" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "presets": { "properties": { "audio": { "const": "hajimi-note-event-v1.1" } } } } },
+      "then": { "required": ["regression"] }
+    },
+    {
+      "if": { "properties": { "presets": { "properties": { "audio": { "const": "hajimi-note-event-v1" } } } } },
+      "then": { "not": { "required": ["regression"] } }
+    }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "relativePath": { "type": "string", "minLength": 1, "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$)).+$" },
+    "fileHash": {
+      "type": "object", "additionalProperties": false, "required": ["path", "sha256"],
+      "properties": { "path": { "type": "string", "minLength": 1 }, "sha256": { "$ref": "#/$defs/sha256" } }
+    },
+    "audioSource": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "sample_rate", "channels", "duration_seconds"],
+      "properties": {
+        "path": { "$ref": "#/$defs/relativePath" }, "sha256": { "$ref": "#/$defs/sha256" },
+        "sample_rate": { "type": "integer", "minimum": 44100 },
+        "channels": { "type": "integer", "minimum": 1, "maximum": 2 },
+        "duration_seconds": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    }
+  }
+}

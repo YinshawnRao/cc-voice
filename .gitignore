@@ -64,3 +64,26 @@ outputs/**
 .idea/
 .vscode/
 *.swp
+
+# --- 备份压缩包（大，勿入 git）---
+backups/
+*.tar.gz
+*.tar
+
+# --- 公开前补充（2026-10-28）---
+# 视频（根目录原先未挡；hajimi-remix 内另有规则）
+*.mp4
+*.mkv
+*.mov
+*.avi
+
+# RVC / 训练边角产物
+*.index
+*.npy
+*.pkl
+
+# yt-dlp 等下载元数据
+*.info.json
+
+# 助手/编辑器本地目录
+.claude/

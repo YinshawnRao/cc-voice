@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "preset_id": "hajimi-note-event-v1",
+  "preset_version": 1,
+  "status": "FROZEN_INTERNAL_BASELINE",
+  "scope": {
+    "minimum_window_seconds": 20,
+    "maximum_window_seconds": 75,
+    "sample_rate_hz": 44100,
+    "production_variant": "hybrid"
+  },
+  "extractor": {
+    "backend": "praat_autocorrelation",
+    "hop_seconds": 0.01,
+    "minimum_stable_note_seconds": 0.07,
+    "maximum_same_label_bridge_seconds": 0.04,
+    "voicing_threshold": 0.45,
+    "strength_threshold": 0.78,
+    "rms_threshold_dbfs": -38,
+    "cents_window": 55,
+    "structure_reset_tolerance_seconds": 0.4
+  },
+  "event_grouping": {
+    "attack_reset_gap_seconds": 0.12,
+    "maximum_vowel_bridge_seconds": 0.28,
+    "attack_stable_lead_fallback_seconds": 0.05,
+    "attack_before_stable_minimum_seconds": 0.025,
+    "bridge_tail_seconds": 0.006,
+    "crossfade_seconds": {
+      "attack_to_sustain": 0.004,
+      "release": 0.006
+    },
+    "maximum_release_seconds": 0.05,
+    "token_cycle": ["哈", "基", "米", "南", "北", "绿", "豆"]
+  },
+  "source_policy": {
+    "attack": "zh_yushu",
+    "sustain": "jp_hajimi",
+    "guide_enters_mix": false,
+    "pitch_failure_policy": "FAIL_CLOSED",
+    "input_length_mismatch_policy": "FAIL_CLOSED"
+  },
+  "qa": {
+    "note_coverage_ratio": 1,
+    "f0_error_median_cents_max": 10,
+    "f0_error_p90_cents_max": 25,
+    "octave_error_count_max": 0,
+    "onset_error_median_ms_max": 35,
+    "onset_error_p90_ms_max": 70,
+    "onset_within_100ms_pass_ratio": 1,
+    "onset_within_100ms_warn_ratio_min": 0.98,
+    "splice_discontinuity_count_max": 0
+  },
+  "resources": {
+    "numerical_library_threads": 2,
+    "ffmpeg_threads": 2,
+    "maximum_extract_wall_seconds": 10,
+    "maximum_extract_rss_mb": 1024,
+    "maximum_render_mix_wall_seconds": 30,
+    "maximum_render_mix_rss_mb": 2048,
+    "maximum_qa_wall_seconds": 10,
+    "maximum_qa_rss_mb": 1024,
+    "maximum_swap_count": 0,
+    "concurrent_heavy_tasks": 1
+  }
+}

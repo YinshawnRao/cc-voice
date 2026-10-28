@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "hajimi-visual-window",
+  "mode": "source_mv_window",
+  "source": {
+    "url": "https://www.youtube.com/watch?v=productions",
+    "title": "突然想起你",
+    "channel": "LOCAL YOUTUBE MV LIBRARY",
+    "local_path": "cc-media/sandbox/chenwei-female-voices/raw/bili_p1_turanxiangqini_clean.mp4",
+    "sha256": "daa20ce56b17edade33dd51879ef85fb3bbec5197fb66fe5df6f788a7135883b",
+    "duration_seconds": 229.621474,
+    "window_start_seconds": 48.699,
+    "window_end_seconds": 85.939
+  },
+  "alignment": {
+    "method": "mono_8khz_audio_cross_correlation",
+    "probe_start_seconds": 48.309,
+    "probe_end_seconds": 78.309,
+    "lag_seconds": 0.39,
+    "normalized_peak": 0.969
+  },
+  "proxy": {
+    "path": "assets/visual.mp4",
+    "sha256": "710b78493615c699c051e08153258810dbfbcf9886f56b5e020d93024f936624",
+    "duration_seconds": 37.233333,
+    "frame_count": 1117,
+    "codec": "h264",
+    "profile": "High",
+    "pixel_format": "yuv420p",
+    "width": 928,
+    "height": 642,
+    "fps": 30.0,
+    "audio_stream_count": 0,
+    "keyframe_interval_max_seconds": 1.0,
+    "muted": true,
+    "color": "BT.709 SDR"
+  }
+}

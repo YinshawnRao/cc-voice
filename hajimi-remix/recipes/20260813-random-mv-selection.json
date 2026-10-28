@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "selection_date": "2026-08-13",
+  "seed": 20260813,
+  "sampling": {
+    "algorithm": "python random.Random(seed).sample(sorted_pool, len(sorted_pool))",
+    "initial_pool": [
+      "bainianguji",
+      "namejiaoao",
+      "turanxiangqini"
+    ],
+    "random_order": [
+      "bainianguji",
+      "namejiaoao",
+      "turanxiangqini"
+    ],
+    "target_count": 2,
+    "gate": "A candidate must have local paired stems, a decodable local MV, and stable same-version audio alignment. Rejected candidates are replaced by the next item in random_order."
+  },
+  "rejected": [
+    {
+      "slug": "namejiaoao",
+      "title": "那么骄傲",
+      "reason": "The local MV is a shortened live performance while the stems are the studio version; correlation is low and offsets are inconsistent.",
+      "mv_source": {
+        "path": "/Users/yinshawnrao/explorer/cc-media/sandbox/jin-haixin-hidden-name/raw/TrZFNG5O8-Y.mp4",
+        "sha256": "9ae6d2d10e9a11dd75b5cba8b0a07a66bf79ea30ec0ee1cb591092fbfc573899",
+        "duration_seconds": 143.917279
+      },
+      "guide_source": {
+        "path": "raw/source-songs/namejiaoao.wav",
+        "sha256": "78e84d314684ef46c1637c9471f811ae1cc02c361db2003ba4fb789c4c2139aa",
+        "duration_seconds": 250.98449
+      },
+      "alignment_probe": {
+        "method": "8 kHz mono waveform to 200 Hz log-RMS envelope normalized cross-correlation",
+        "window_seconds": 30,
+        "windows": [
+          {
+            "audio_start_seconds": 20.0,
+            "best_video_start_seconds": 16.075,
+            "correlation": 0.2694,
+            "offset_seconds": -3.925
+          },
+          {
+            "audio_start_seconds": 60.0,
+            "best_video_start_seconds": 55.895,
+            "correlation": 0.2386,
+            "offset_seconds": -4.105
+          },
+          {
+            "audio_start_seconds": 100.0,
+            "best_video_start_seconds": 12.435,
+            "correlation": 0.2376,
+            "offset_seconds": -87.565
+          }
+        ]
+      }
+    }
+  ],
+  "selected": [
+    {
+      "slug": "bainianguji",
+      "title": "百年孤寂",
+      "mv_source": {
+        "path": "/Users/yinshawnrao/explorer/cc-media/sandbox/wangfei-intro-top5/raw/bainian.mp4",
+        "sha256": "a99bb7ade968f883e7a498749f343255e15a7618d90d57faf4799b15d96a6ddc",
+        "duration_seconds": 320.667574,
+        "strict_decode": "pass"
+      },
+      "stems": {
+        "guide_vocal": {
+          "path": "dataset/source-songs/vocals/bainianguji.wav",
+          "sha256": "fed9dd310ad6545de9b55ca4b7f6b43b0295a1e33a2784f3cbd4243dca993ef5",
+          "duration_seconds": 320.667574
+        },
+        "instrumental": {
+          "path": "dataset/source-songs/no_vocals/bainianguji.wav",
+          "sha256": "a342cc7d34cde3dcfde85651f3ffd3ac83d5d471eaf7e8e991635ca725886bdf",
+          "duration_seconds": 320.667574
+        }
+      },
+      "alignment": {
+        "relation": "video_time_seconds = audio_time_seconds",
+        "video_offset_seconds": 0.0,
+        "probe_method": "8 kHz mono waveform to 200 Hz log-RMS envelope normalized cross-correlation",
+        "window_seconds": 30,
+        "windows": [
+          {
+            "audio_start_seconds": 30.0,
+            "best_video_start_seconds": 30.0,
+            "correlation": 1.0
+          },
+          {
+            "audio_start_seconds": 80.0,
+            "best_video_start_seconds": 80.0,
+            "correlation": 1.0
+          },
+          {
+            "audio_start_seconds": 150.0,
+            "best_video_start_seconds": 150.0,
+            "correlation": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "slug": "turanxiangqini",
+      "title": "突然想起你",
+      "selection_note": "Replaced rejected namejiaoao as the next candidate in random_order.",
+      "mv_source": {
+        "path": "/Users/yinshawnrao/explorer/cc-media/sandbox/chenwei-female-voices/raw/bili_p1_turanxiangqini_clean.mp4",
+        "sha256": "daa20ce56b17edade33dd51879ef85fb3bbec5197fb66fe5df6f788a7135883b",
+        "duration_seconds": 229.621474,
+        "strict_decode": "pass"
+      },
+      "stems": {
+        "guide_vocal": {
+          "path": "dataset/source-songs/vocals/turanxiangqini.wav",
+          "sha256": "56033126343699675a5f7924ab8eccd1d16732ba3089754c0887fb3f0868d9d5",
+          "duration_seconds": 236.588118
+        },
+        "instrumental": {
+          "path": "dataset/source-songs/no_vocals/turanxiangqini.wav",
+          "sha256": "d7f2068cf424727c9eb1c3a4205297984e3f893b884e32ecb2cef0fe7f8cf4e0",
+          "duration_seconds": 236.588118
+        }
+      },
+      "alignment": {
+        "relation": "video_time_seconds = audio_time_seconds + 0.390",
+        "video_offset_seconds": 0.39,
+        "probe_method": "8 kHz mono waveform to 200 Hz log-RMS envelope normalized cross-correlation",
+        "window_seconds": 30,
+        "windows": [
+          {
+            "audio_start_seconds": 30.0,
+            "best_video_start_seconds": 30.39,
+            "correlation": 0.9709
+          },
+          {
+            "audio_start_seconds": 80.0,
+            "best_video_start_seconds": 80.39,
+            "correlation": 0.9804
+          },
+          {
+            "audio_start_seconds": 140.0,
+            "best_video_start_seconds": 140.39,
+            "correlation": 0.9688
+          }
+        ]
+      }
+    }
+  ]
+}

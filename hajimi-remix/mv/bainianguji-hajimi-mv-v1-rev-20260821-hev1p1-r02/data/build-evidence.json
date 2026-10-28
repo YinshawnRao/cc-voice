@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "status": "VIDEO_STREAM_REUSED_TIMELINE_IDENTICAL",
+  "recipe_sha256": "4188bb270fdc2e5719c79a0fd490683c65ac0bdc6f212c5f19593eba5bea9252",
+  "audio_run_id": "20260820_bainianguji_hev1p1_r01",
+  "master_sha256": "cb74ff7beffb58f5214df8da8eae835c4601da9b914deb00cee4d4415a1fa0c5",
+  "timeline_signature": "090a56771ae98ada805212a38a138cfa7e46b7038f0c9c17f5e2b06ab1930cec",
+  "visual_signature": "2788318b641c0521f8d2aa859f153778ebabc5f86075e6cfb78ff1b363aa3be2"
+}

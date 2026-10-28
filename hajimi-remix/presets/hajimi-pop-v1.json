@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "preset_id": "hajimi-pop-v1",
+  "preset_version": 1,
+  "status": "FROZEN_INTERNAL_BASELINE",
+  "vocal_filter": {
+    "highpass_hz": 90,
+    "lowpass_hz": 14500
+  },
+  "compressor": {
+    "threshold_dbfs": -20,
+    "ratio": 3,
+    "attack_ms": 8,
+    "release_ms": 90
+  },
+  "doubles": {
+    "left_pitch_semitones": -0.045,
+    "right_pitch_semitones": 0.045,
+    "left_delay_ms": 4.7,
+    "right_delay_ms": 8.3,
+    "pre_climax_gain_db": -7.5,
+    "climax_gain_db": -4
+  },
+  "room": {
+    "length_ms": 280,
+    "pre_climax_gain_db": -15,
+    "climax_gain_db": -10
+  },
+  "instrument_duck": {
+    "low_hz": 1800,
+    "high_hz": 5200,
+    "maximum_reduction_db": 1.6,
+    "detector_window_ms": 45
+  },
+  "section_balance": {
+    "pre_climax_vocal_to_instrument_db": -1.2,
+    "climax_vocal_to_instrument_db": 3.2,
+    "transition_ms": 300
+  },
+  "premaster": {
+    "sample_peak_dbfs_max": -3
+  },
+  "master": {
+    "integrated_lufs_target": -9.5,
+    "integrated_lufs_tolerance": 0.5,
+    "true_peak_dbtp_max": -1,
+    "sample_rate_hz": 44100,
+    "channels": 2,
+    "wav_subtype": "PCM_24"
+  },
+  "pitch_shift_warning": {
+    "p90_semitones": 4,
+    "maximum_semitones": 7
+  }
+}

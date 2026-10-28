@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "preset_id": "hajimi-note-event-v1.1-poc1",
+  "preset_version": "1.1.0-poc.1",
+  "status": "EXPERIMENTAL_AB_ONLY",
+  "extends": "hajimi-note-event-v1",
+  "scope": {
+    "purpose": "equal-loudness articulation A/B only",
+    "production_default": false,
+    "promotion_requires": "human listening plus a separately approved production-contract change"
+  },
+  "articulation": {
+    "mode": "zh_vowel_nucleus_then_jp_sustain",
+    "token_nucleus_ms": {
+      "哈": 40,
+      "基": 50,
+      "米": 40,
+      "南": 60,
+      "北": 50,
+      "绿": 60,
+      "豆": 50
+    },
+    "crossfade_ms": 8,
+    "maximum_group_sustain_ratio": 0.3,
+    "minimum_applied_nucleus_ms": 24,
+    "short_group_policy": "FALLBACK_TO_V1_AND_RECORD"
+  },
+  "invariants": {
+    "event_timeline_changes": false,
+    "attack_timing_changes": false,
+    "mix_or_master_changes": false,
+    "voicebank_changes": false,
+    "mv_changes": false
+  }
+}

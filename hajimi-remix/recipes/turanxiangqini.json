@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "hajimi-song-recipe",
+  "song_id": "turanxiangqini",
+  "display": {
+    "title_zh": "突然想起你",
+    "title_en": "Suddenly Thought of You",
+    "artist_label": "萧亚轩 / Elva Hsiao",
+    "hajimi_label": "HAJIMI REMIX"
+  },
+  "presets": {
+    "audio": "hajimi-note-event-v1",
+    "mix": "hajimi-pop-v1",
+    "video": "hajimi-rain-window-v1"
+  },
+  "source": {
+    "guide_vocal": {
+      "path": "dataset/source-songs/vocals/turanxiangqini.wav",
+      "sha256": "56033126343699675a5f7924ab8eccd1d16732ba3089754c0887fb3f0868d9d5",
+      "sample_rate": 44100,
+      "channels": 2,
+      "duration_seconds": 236.588118
+    },
+    "instrumental": {
+      "path": "dataset/source-songs/no_vocals/turanxiangqini.wav",
+      "sha256": "d7f2068cf424727c9eb1c3a4205297984e3f893b884e32ecb2cef0fe7f8cf4e0",
+      "sample_rate": 44100,
+      "channels": 2,
+      "duration_seconds": 236.588118
+    }
+  },
+  "window": {
+    "start_seconds": 48.309,
+    "end_seconds": 85.549,
+    "duration_seconds": 37.24,
+    "selection_evidence": "The mapped MV interval 48.699-85.939s covers the continuous 48.98-85.64s lead-vocal section and ends at the start of the approved safe gap."
+  },
+  "event_extraction": {
+    "pitch_floor_hz": 85.0,
+    "pitch_ceiling_hz": 650.0,
+    "midi_min": 52,
+    "midi_max": 78,
+    "structure_points_relative_seconds": [
+      6.27,
+      11.1,
+      16.17,
+      21.03,
+      28.53,
+      33.65
+    ]
+  },
+  "arrangement": {
+    "climax_seconds": 21.03,
+    "bridge_gap_seconds": 0.28,
+    "sections": []
+  },
+  "voicebank": {
+    "jp_sustain": {
+      "path": "hajimi-remix/assets/voicebank/hachimi_o_nameruto_phrase.wav",
+      "sha256": "9cf80e21fb487edaa773eec0ec76402d9cd26c9e59b620d3609f9fb7022292f2"
+    },
+    "zh_attack": {
+      "path": "hajimi-remix/assets/voicebank/hajimi_nanbei_lvdou_zh_yushu.wav",
+      "sha256": "cd48f74a9ce92705f10814122717d5570b25bfaa7674b94fcf234150f0f99c7d"
+    }
+  },
+  "mv": {
+    "source_video": {
+      "path": "/Users/yinshawnrao/explorer/cc-media/sandbox/chenwei-female-voices/raw/bili_p1_turanxiangqini_clean.mp4",
+      "sha256": "daa20ce56b17edade33dd51879ef85fb3bbec5197fb66fe5df6f788a7135883b",
+      "duration_seconds": 229.621474,
+      "width": 1920,
+      "height": 822,
+      "fps": 30.0
+    },
+    "audio_to_video_offset_seconds": 0.39,
+    "offset_convention": "video_time = audio_time + audio_to_video_offset_seconds",
+    "alignment_evidence": {
+      "method": "three-window 2 kHz mono waveform cross-correlation",
+      "normalized_peak_range": [
+        0.969,
+        0.98
+      ],
+      "status": "PASS"
+    }
+  },
+  "selection": {
+    "mode": "deterministic_random_from_eligible_local_mv_library",
+    "seed": 20260813,
+    "status": "FALLBACK_SELECTED",
+    "replaced_song_id": "namejiaoao",
+    "replacement_reason": "The available 2021 live MV did not correlate with the studio stems, so the V1 alignment gate rejected it."
+  }
+}

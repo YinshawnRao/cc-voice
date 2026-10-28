@@ -1,0 +1,14 @@
+# Copyrighted/local audio and generated artifacts stay outside git.
+assets/
+work/
+outputs/
+__pycache__/
+*.pyc
+
+# Local MV media, previews, renders and machine QA are reproducible artifacts.
+*.mp4
+mv/**/.thumbnails/
+mv/**/.waveform-cache/
+mv/**/snapshots/
+mv/**/renders/
+mv/**/qa/

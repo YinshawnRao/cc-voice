@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "hajimi-song-recipe",
+  "song_id": "bainianguji",
+  "display": {
+    "title_zh": "百年孤寂",
+    "title_en": "Century of Solitude",
+    "artist_label": "王菲 / Faye Wong",
+    "hajimi_label": "HAJIMI REMIX"
+  },
+  "presets": {
+    "audio": "hajimi-note-event-v1",
+    "mix": "hajimi-pop-v1",
+    "video": "hajimi-rain-window-v1"
+  },
+  "source": {
+    "guide_vocal": {
+      "path": "dataset/source-songs/vocals/bainianguji.wav",
+      "sha256": "fed9dd310ad6545de9b55ca4b7f6b43b0295a1e33a2784f3cbd4243dca993ef5",
+      "sample_rate": 44100,
+      "channels": 2,
+      "duration_seconds": 320.667574
+    },
+    "instrumental": {
+      "path": "dataset/source-songs/no_vocals/bainianguji.wav",
+      "sha256": "a342cc7d34cde3dcfde85651f3ffd3ac83d5d471eaf7e8e991635ca725886bdf",
+      "sample_rate": 44100,
+      "channels": 2,
+      "duration_seconds": 320.667574
+    }
+  },
+  "window": {
+    "start_seconds": 30.3,
+    "end_seconds": 85.0,
+    "duration_seconds": 54.7,
+    "selection_evidence": "Historical lead-vocal analysis begins near 30.54s and the approved safe-cut interval is 84.42-86.13s."
+  },
+  "event_extraction": {
+    "pitch_floor_hz": 85.0,
+    "pitch_ceiling_hz": 650.0,
+    "midi_min": 52,
+    "midi_max": 77,
+    "structure_points_relative_seconds": [
+      11.16,
+      17.86,
+      24.02,
+      29.24,
+      37.24
+    ]
+  },
+  "arrangement": {
+    "climax_seconds": 37.24,
+    "bridge_gap_seconds": 0.28,
+    "sections": []
+  },
+  "voicebank": {
+    "jp_sustain": {
+      "path": "hajimi-remix/assets/voicebank/hachimi_o_nameruto_phrase.wav",
+      "sha256": "9cf80e21fb487edaa773eec0ec76402d9cd26c9e59b620d3609f9fb7022292f2"
+    },
+    "zh_attack": {
+      "path": "hajimi-remix/assets/voicebank/hajimi_nanbei_lvdou_zh_yushu.wav",
+      "sha256": "cd48f74a9ce92705f10814122717d5570b25bfaa7674b94fcf234150f0f99c7d"
+    }
+  },
+  "mv": {
+    "source_video": {
+      "path": "/Users/yinshawnrao/explorer/cc-media/sandbox/wangfei-intro-top5/raw/bainian.mp4",
+      "sha256": "a99bb7ade968f883e7a498749f343255e15a7618d90d57faf4799b15d96a6ddc",
+      "duration_seconds": 320.667574,
+      "width": 656,
+      "height": 480,
+      "fps": 30.0
+    },
+    "audio_to_video_offset_seconds": 0.0,
+    "offset_convention": "video_time = audio_time + audio_to_video_offset_seconds",
+    "alignment_evidence": {
+      "method": "duration equality plus 2 kHz mono waveform cross-correlation",
+      "normalized_peak": 0.999994,
+      "status": "PASS"
+    }
+  },
+  "selection": {
+    "mode": "deterministic_random_from_eligible_local_mv_library",
+    "seed": 20260813,
+    "status": "SELECTED"
+  }
+}
